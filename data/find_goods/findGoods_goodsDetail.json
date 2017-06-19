@@ -1,0 +1,118 @@
+{	
+	"success":true,
+    "goodsDetail": 
+        {
+            "goodsId":"1",
+            "goodsCovers": [
+                {"goodsCoverUrl":"/image/find_goods/D4F17AE5-80D9-48B2-8EBC-A9A995998504.png"},
+                {"goodsCoverUrl":"/image/find_goods/D4F17AE5-80D9-48B2-8EBC-A9A995998504.png"},
+                {"goodsCoverUrl":"/image/find_goods/D4F17AE5-80D9-48B2-8EBC-A9A995998504.png"},
+                {"goodsCoverUrl":"/image/find_goods/D4F17AE5-80D9-48B2-8EBC-A9A995998504.png"}
+            ],
+            "goodsSellNumber":10,
+            "goodsName":"苹果 iphone 7",
+            "goodsIntro":"【现货】【明星款】果粉必备红色特别版 中国移动 电信 联通",
+            "goodsPriceNew":5688,
+            "goodsPriceOld":6200,
+            "goodsPicWordContent":"<p><strong>时代减肥路上的风景蓝山咖啡就撒发生</strong></p>",
+            "goodsParamList":[
+                {
+                   "goodsParamName":"品牌名称",
+                   "goodsParamValue":"苹果"         
+                },
+                {
+                   "goodsParamName":"商品名称",
+                   "goodsParamValue":"iphone7 128G大红色 全网通"         
+                },
+                {
+                   "goodsParamName":"系统",
+                   "goodsParamValue":"苹果（IOS）"         
+                },
+                {
+                   "goodsParamName":"屏幕分辨率",
+                   "goodsParamValue":"1334X750"         
+                },
+                {
+                   "goodsParamName":"售后服务",
+                   "goodsParamValue":"全国联保"         
+                },
+                {
+                   "goodsParamName":"附加功能",
+                   "goodsParamValue":"WIFI上网"         
+                },
+                {
+                   "goodsParamName":"屏幕尺寸",
+                   "goodsParamValue":"4.5-5尺寸"         
+                },
+                {
+                   "goodsParamName":"网络类型",
+                   "goodsParamValue":"移动4G/联通4G／电信4G"         
+                },
+                {
+                   "goodsParamName":"触摸屏类型",
+                   "goodsParamValue":"电容屏"         
+                }
+
+            ],
+            "storeId":"2",
+            "storeIcon":"/image/find_goods/25FEC308-A8CB-4A02-BE84-4AC5A9BB48A8.png",
+            "storeName":"迪信通",
+            "storeChildName":"政务区天鹅湖万达店",
+            "goodsComments":[
+                {
+                    "commentId":"1",
+                    "commentCover":"/image/find_goods/16F15782-B531-4B67-947B-6EAA06D9D3C8.png",
+                    "commentUserFace":"/image/find_goods/DB9F8E92-3C13-41B5-8945-B324E1291543.png",
+                    "commentUserName":"lin_Mei",
+                    "commentContent":"1还是忍不住剁手了，整体感觉挺不错的，页没有网上所说的有嗲流程",
+                    "commentIsNew":true
+                },
+                {
+                    "commentId":"2",
+                    "commentCover":"",
+                    "commentUserFace":"/image/find_goods/DB9F8E92-3C13-41B5-8945-B324E1291543.png",
+                    "commentUserName":"张三",
+                    "commentContent":"2还是忍不住剁手了，整体感觉挺不错的，页没有网上所说的有嗲流程",
+                    "commentIsNew":false
+                }
+            ],
+            "goodsNotes":[
+                {
+                    "noteId":"1",
+                    "noteCover":"/image/find_goods/648FDA50-B36F-4E56-B3F6-295EC054E162.png",
+                    "noteTitle":"大家多年的晕血症估计被这iphone 7红色特别。。。",
+                    "noteContent":"自从红色特别版手机上市后大家对这中国红貌似还是",
+                    "publishUserFace":"/image/find_goods/DB9F8E92-3C13-41B5-8945-B324E1291543.png",
+                    "publishUserName":"丁雯1",
+                    "likeNum":100
+                },
+                {
+                    "noteId":"3",
+                    "noteCover":"/image/find_goods/F86C6330-C349-4C07-A0AF-B219061A7124.png",
+                    "noteTitle":"大家多年的晕血症估计被这iphone 7红色特别。。。",
+                    "noteContent":"自从红色特别版手机上市后大家对这中国红貌似还是",
+                    "publishUserFace":"/image/find_goods/DB9F8E92-3C13-41B5-8945-B324E1291543.png",
+                    "publishUserName":"丁雯3",
+                    "likeNum":100
+                },
+                {
+                    "noteId":"4",
+                    "noteCover":"/image/find_goods/FA9A3975-F3EF-4947-931E-3A3D7AFF589D.png",
+                    "noteTitle":"大家多年的晕血症估计被这iphone 7红色特别。。。",
+                    "noteContent":"自从红色特别版手机上市后大家对这中国红貌似还是",
+                    "publishUserFace":"/image/find_goods/DB9F8E92-3C13-41B5-8945-B324E1291543.png",
+                    "publishUserName":"丁雯4",
+                    "likeNum":100
+                },
+                {
+                    "noteId":"5",
+                    "noteCover":"/image/find_goods/0CBB65B6-A1FE-4195-BD27-287204345E40.png",
+                    "noteTitle":"大家多年的晕血症估计被这iphone 7红色特别。。。",
+                    "noteContent":"自从红色特别版手机上市后大家对这中国红貌似还是",
+                    "publishUserFace":"/image/find_goods/DB9F8E92-3C13-41B5-8945-B324E1291543.png",
+                    "publishUserName":"丁雯5",
+                    "likeNum":100
+                }
+            ]
+        }
+}

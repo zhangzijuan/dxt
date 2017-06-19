@@ -1,0 +1,26 @@
+{	
+	"success":true,
+    "historySearchList": [
+        {
+            "historySearchId":"1",
+            "historySearchName": "iphone7"
+        },
+        {
+            "historySearchId":"2",
+            "historySearchName": "小米note2"
+        },
+        {
+            "historySearchId":"3",
+            "historySearchName": "荣耀v9"
+        },
+        {
+            "historySearchId":"4",
+            "historySearchName": "苹果7P"
+        },
+        {
+            "historySearchId":"5",
+            "historySearchName": "魅族s3"
+        }
+
+    ]
+}

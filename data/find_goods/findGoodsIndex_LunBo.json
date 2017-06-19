@@ -1,0 +1,17 @@
+{	
+	"success":true,
+    "lunBoList": [
+        {
+            "goodsId":"1",
+            "goodsPic": "/image/find_goods/836DB99E-CC83-402F-BCEA-FECBF1CA9B10.png"
+        },
+        {
+            "goodsId":"2",
+           "goodsPic": "/image/find_goods/836DB99E-CC83-402F-BCEA-FECBF1CA9B10.png"
+        },
+        {
+            "goodsId":"3",
+            "goodsPic": "/image/find_goods/836DB99E-CC83-402F-BCEA-FECBF1CA9B10.png"
+        }
+    ]
+}

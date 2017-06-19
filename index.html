@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>DXT</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="renderer" content="webkit">
+
+        <!-- 引入bootstrap.css -->
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+        <!-- 图标库css --> 
+        <link rel="stylesheet" href="http://at.alicdn.com/t/font_jj8msby5hkdl5wmi.css">
+        <!-- 图片轮播css -->
+        <link rel="stylesheet" href="css/common/swiper-3.4.2.min.css">
+        <link rel="stylesheet" href="css/common/dropload.css">
+
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
+        <link rel="stylesheet" href="css/dxt.css"> 
+
+        <!-- 引入jquery.js -->
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/common/swiper-3.4.2.jquery.min.js"></script>
+        
+        <!-- 引入bootstrap.js -->
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+        <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+        <!-- 引入angular.js -->
+        <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+        <script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
+
+        <script type="text/javascript" src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="js/common/dropload.min.js"></script>
+        <script src="js/common/iscroll.min.js"></script>
+        <script type="text/javascript" src="js/dxt_globle.js"></script>
+        <script type="text/javascript" src="js/dxt_directive.js"></script>
+        <script type="text/javascript" src="js/find_goods.js"></script>
+        <script type="text/javascript" src="js/find_store.js"></script>
+        <script type="text/javascript" src="js/look_something.js"></script>
+        <script type="text/javascript" src="js/my_seller.js"></script>
+    </head>
+    <body ng-app='dxtApp' ontouchstart="">
+        <div class="dxt-page-nav" ng-controller="DxtPageNavCtrl">
+            <header class="header" ng-click="openPageNav()">DXT项目路径导航(点我)</header>
+            <ul class="list-unstyled" ng-class="{'show':navShow,'hide':!navShow}">
+                <li><a href="#/">首页</a></li>
+                <li><a href="#/find_goods">找潮货首页 </a></li>
+                <li><a href="#/find_goods/goods_detail/1">找潮货-商品详情页</a></li>
+                <li><a href="#/find_store">寻好店首页 </a></li>
+                <li><a href="#/find_store/1">寻好店-店铺详情页</a></li>
+                <li><a href="#/look_something">看看首页</a></li>
+                <li><a href="#/my_seller/thumb_up_list">营业员-我的点赞列表</a></li>
+                <li><a href="#/my_seller/search/iphone6">营业员-选择（搜索）商品</a></li>
+            </ul>
+        </div>
+
+        <div class="dxt-content">
+            <div class="container container-fluid" ng-view></div>
+        </div>
+
+        <!-- 首页（默认界面） -->
+        <script type="text/ng-template" id="index">
+            <h1> Home </h1>
+        </script>
+
+        <!-- 营业员-我的点赞列表-->
+        <script type="text/ng-template" id="my_seller/thumb_up_list.html">
+            <section class="seller-thumb-up-container row">
+                <div class="thumb-up-item col-xs-12" ng-repeat="thumbUp in thumbUpList" ng-click="viewNoteDetail(thumbUp.thumbUpNoteId)">
+                    <span class="thumb-up-title col-xs-9">{{thumbUp.thumbUpNoteTitle}}</span>
+                    <span class="thumb-up-tip col-xs-2 col-xs-offset-1">
+                        <span class="iconfont icon-dianzan1"/>
+                        <span class="thumb-up-num">{{thumbUp.thumbUpNum}}</span>
+                    </span>
+                </div>
+            </section>
+        </script>
+
+        <!-- 营业员-选择（搜索）商品-->
+        <script type="text/ng-template" id="my_seller/search_select_goods.html">
+            <section class="seller-search-select-container row">
+                <div class="search-input-container navbar-fixed-top col-xs-12">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="商品品牌及型号" aria-describedby="basic-addon2" ng-model="inputText" search-hide-history>
+                        <span class="input-group-addon" id="basic-addon2" ng-click="searchSecectGoods()">&nbsp;搜索</span>
+                    </div>
+                    <span class="iconfont icon-search"/>
+                </div>
+                <div class="history-search-container col-xs-12" ng-if="historySearchList.length > 0">
+                    <div class="history-result-bar col-xs-12">
+                        <span class="history-result-bar-tip col-xs-2">历史搜索</span>
+                        <span class="col-xs-2 del-opt pull-right text-right">
+                            <span class="iconfont icon-shanchu" ng-click="deleteHistorySearch()"/>
+                        </span>
+                    </div>
+                    <didv class="history-search-content col-xs-12 text-center">
+                        <span class="history-item col-xs-3" ng-repeat="historyItem in historySearchList" ng-click="selectHistorySearch(historyItem.historySearchId)" search-select-goods>{{historyItem.historySearchName}}</span>
+                    </div>       
+                </div>
+                <div class="search-result-list-container col-xs-12">
+                        <div class="search-result-item col-xs-12" ng-repeat="searchResult in searchResultList" search-select-goods>
+                            <span class="goods-name col-xs-8">{{searchResult.goodsName}}</span>
+                            <span class="iconfont col-xs-2 col-xs-offset-2
+                            text-right"/>
+                        </div>
+                    </div> 
+            </section>
+        </script>
+
+        <!-- 找潮货首页 -->
+        <script type="text/ng-template" id="find_goods/index.html">
+            <section class="find-goods-container">
+                <div class="goods-header row">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" ng-click="goodsItemClick(lunbo.goodsId)" ng-repeat="lunbo in lunBoList">
+                                <img class="col-xs-12" ng-src="{{lunbo.goodsPic}}">
+                            </div>
+                        </div>
+                        <!-- 如果需要分页器 -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <div class="cut-off-bar row"></div>
+                <div class="goods-content-list row">
+                    <div class="goods-item-container col-xs-12" ng-repeat="goodsItem in findGoodsList" ng-click="goodsItemClick(goodsItem.goodsId)">
+                        <div class="goods-pic-container col-xs-3">
+                            <img class="goods-pic col-xs-12" ng-src="{{goodsItem.goodsPic}}">
+                        </div>
+                        <div class="goods-introduction-container col-xs-9">
+                            <span class="goods-name col-xs-12">{{goodsItem.goodsName}}</span>
+                            <span class="goods-str col-xs-12">{{goodsItem.goodsStr}}</span>
+                            <div class="goods-opt col-xs-12">
+                                <span class="goods-note-num col-xs-8">  
+                                    <div class="goods-note-tip-pic-container col-xs-2">
+                                        <span class="goods-note-tip-pic iconfont icon-chaojibiji222"/>
+                                    </div>
+                                    <span class="goods-note-tip-text col-xs-10">用户笔记{{goodsItem.noteNum}}篇</span>
+                                </span>
+                                <span class="select-buy pull-right">选购</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </script>
+
+        <!-- 寻好店首页 -->
+        <script type="text/ng-template" id="find_store/index.html">
+            <section class="find-store-container row">
+                <div class="find-store-tip-bar col-xs-12">
+                    <span class="iconfont icon-dianpu"/>
+                    <span class="select-tip">为您挑选</span>
+                    <span class="view-all pull-right" ng-click="viewAllStore()">全部<span class="iconfont icon-jiantou-copy"/></span>
+                </div>
+                <div class="find-store-content col-xs-12" page-name="find-store-content" page-scroll>
+                    <div class="page-scroll-content">
+                        <div class="find-store-item col-xs-12" ng-repeat="storeItem in storeItemList">
+                            <div class="store-pic-container col-xs-12">
+                                <img ng-src="{{storeItem.storeCover}}"/>
+                                <span class="store-from"><span class="iconfont icon-location"/><span class="store-pic-tip-text">距离{{storeItem.distanceMe}}km</span></span>
+                                <div class="store-collect" ng-click="collectStore(storeItem.storeId)">
+                                    <span class="iconfont" ng-class="{'icon-g':storeItem.collected,'icon-favorite':!storeItem.collected}"/><span class="store-pic-tip-text">收藏</span>
+                                </div>
+                            </div>
+                            <div class="store-intro-container col-xs-12">
+                                <span class="store-name col-xs-12 text-center">{{storeItem.storeName}}</span>
+                                <span class="store-intro col-xs-12">{{storeItem.storeStr}}</span>
+                            </div>
+                            <div class="store-recommended-consultant-container">
+                                <span class="recommend-tip-text col-xs-12 text-center">为您推荐的顾问</span>
+                                <div class="recommended-consultant-item col-xs-12 text-center">
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide single-consultant col-xs-2" ng-repeat="consultant in storeItem.recommendedConsultants">
+                                                <img ng-src="{{consultant.consultantFace}}">
+                                                <span class="consultant-name">{{consultant.consultantName}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="goto-store-opt col-xs-12 text-center">
+                                <span class="go-to-store col-xs-6 col-xs-offset-3" ng-click="goStoreDetail(storeItem.storeId)">进店逛逛</span>
+                            </div>
+                            <span class="break-line-bar col-xs-12"/>
+                        </div> 
+                    </div>
+                </div>
+            </section>
+        </script>
+
+
+        <!-- 寻好店-店铺详情页面 -->
+        <script type="text/ng-template" id="find_store/store-detail.html">
+            <section class="find-store-detail-container row">
+                <div class="store-detail-pic col-xs-12">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" ng-repeat="storeCover in storeDetailInfo.storeCovers">
+                                <img ng-src="{{storeCover.storeCoverUrl}}">
+                            </div>
+                        </div>
+                        <!-- 如果需要分页器 -->
+                        <div class="swiper-pagination"></div>
+                        <div class="store-detail-info-container col-xs-12">
+                            <div class="store-icon col-xs-2">
+                                <img ng-src="{{storeDetailInfo.storeIcon}}">
+                            </div>
+                            <div class="store-main-info col-xs-8">
+                                <span class="store-detail-name">{{storeDetailInfo.storeName}}</span>
+                                <span class="store-from-me"><span class="iconfont icon-location"/><span class="store-pic-tip-text">距离{{storeDetailInfo.distanceMe}}km</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="store-detail-tab-bar col-xs-12 text-center">
+                    <ul class="nav col-xs-12">
+                        <li class="consultant-tab col-xs-2 col-xs-offset-3" role="presentation" ng-class="{'active':firstTabActive}" ng-click="tabChange('consultant-tab')">
+                            <span>介绍</span>
+                        </li>
+                        <li class="goods-tab col-xs-2 col-xs-offset-2" role="presentation" ng-class="{'active':!firstTabActive}" ng-click="tabChange('goods-tab')">
+                            <span>商品</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="store-goods-container" ng-if="!firstTabActive">
+                    <div class="store-goods-list col-xs-12 text-center">
+                        <div class="store-goods-item col-xs-6" ng-repeat="goods in storeGoodsList" ng-click="viewGoodsDetail(goods.goodsId)">
+                            <div class="goods-cover col-xs-8 col-xs-offset-2">
+                                <img ng-src="{{goods.goodsCover}}"/>
+                            </div>
+                            <span class="goods-title col-xs-12">{{goods.goodsName}}</span>
+                            <span class="goods-intro-text col-xs-12">{{goods.goodsStr}}</span>
+                            <span class="goods-price-container col-xs-12">
+                                <span class="goods-price-new col-xs-5 col-xs-offset-1"><span class="yen">¥</span>{{goods.goodsPriceNew}}</span>
+                                <span class="goods-price-old col-xs-5"><span class="yen">¥</span>{{goods.goodsPriceOld}}</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="store-introduction-container" ng-if="firstTabActive">
+                    <span class="break-line-bar col-xs-12"/>
+                    <div class="store-detail-info col-xs-12">
+                        <div class="store-detail-intro col-xs-12">
+                            <span class="store-intro-tip col-xs-12">店铺简介</span>
+                            <span class="store-intro-cont col-xs-12 text-left">{{storeDetailInfo.storeStr}}</span>
+                        </div>
+                        <div class="store-detail-address col-xs-12">
+                            <div class="store-address-text col-xs-10">
+                                <span class="iconfont icon-didian pull-left"/>
+                                <span class="address-text col-xs-11">{{storeDetailInfo.storeAddress}}</span>
+                            </div>
+                            <span class="iconfont icon-dianhua pull-right"></span>
+                        </div>
+                    </div>
+                    <span class="break-line-bar col-xs-12"/>
+                    <div class="store-inner-pics-container col-xs-12">
+                        <span class="inner-pics-tip col-xs-12">店内图片</span>
+                        <div class="store-inner-pics col-xs-12">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide text-center" ng-repeat="innerPic in storeDetailInfo.storeInnerPics">
+                                        <img ng-src="{{innerPic.innerPicUrl}}">
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                    <span class="break-line-bar col-xs-12"/> 
+                    <div class="all-recommended-consultant-container col-xs-12 text-center">
+                        <span class="recommend-tip-text col-xs-12">为您推荐的顾问</span>
+                        <div class="consultant-list-item col-xs-3" ng-repeat="consultant in storeDetailInfo.recommendedConsultants">
+                            <div class="consultant-pic col-xs-12">
+                                <img ng-src="{{consultant.consultantFace}}">
+                            </div>
+                            <span class="consultant-name col-xs-12">{{consultant.consultantName}}</span>
+                            <span class="fensi-num col-xs-12">已有{{consultant.fensiNum}}位粉丝</span>
+                            <span class="col-xs-12" ng-class="{'consultant-already-follow':consultant.followed,'consultant-follow':!consultant.followed}" data-followed="{{consultant.followed}}" data-id="{{consultant.consultantId}}" data-index="{{$index}}" follow-fensi>
+                                <span ng-if="consultant.followed">已关注</span>
+                                <span ng-if="!consultant.followed">+ 关注</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+        </script>
+
+
+        <!-- 看看首页 -->
+        <script type="text/ng-template" id="look_something/index.html">
+            <section class="look-something-container row">
+                <div class="look-something-promote-container col-xs-12" ng-click="viewPromoteItemDetail(promoteBarInfo.promoteId)">
+                    <div class="promote-pic col-xs-12">
+                        <img ng-src="{{promoteBarInfo.promotePic}}">
+                    </div>
+                    <div class="promote-item-detail col-xs-12 text-center">
+                        <span class="promote-item-name col-xs-12">{{promoteBarInfo.promoteName}}</span>
+                        <span class="promote-item-intro col-xs-12">{{promoteBarInfo.promoteIntro}}</span>
+                    </div>
+                </div> 
+                <span class="break-line-bar col-xs-12"/>
+                <div class="look-something-content col-xs-12">
+                    <div class="look-something-item col-xs-12" ng-repeat="subject in subjectList" ng-click="viewSubjectDetail(subject.subjectId)" >
+                        <div class="something-item-pic col-xs-4">
+                            <img ng-src="{{subject.subjectPic}}">
+                            <span ng-if="subject.subjectType=='shipin'" class="subject-shipin-type">视频</span>
+                            <span ng-if="subject.subjectType=='shipin'" class="subject-shipin-bofang">
+                                <span class="iconfont icon-rectangle1"/>
+                            </span>
+                        </div>
+                        <div class="something-item-detail col-xs-8">
+                            <span class="subject-name col-xs-9">{{subject.subjectPicName}}</span>
+                            <span class="subject-attr col-xs-12">{{subject.subjectAttr}}</span>
+                            <div class="subject-tip col-xs-12">
+                                <span class="subject-store-container col-xs-9">
+                                    <span class="iconfont icon-location"/>
+                                    <span class="subject-store-name">{{subject.subjectStoreName}}</span>
+                                </span>
+                                <span class="subject-time text-right col-xs-3">{{subject.subjectTime}}</span>
+                            </div>
+                        </div>
+                        <span class="subject-jiaobiao iconfont icon-zuixin" ng-if="subject.subjectNew || subject.subjectRecommend" ng-class="{'zuixin':subject.subjectNew,'tuijian':subject.subjectRecommend}">
+                           <span class="subject-jiaobiao-text" ng-if="subject.subjectNew">最新</span>
+                           <span class="subject-jiaobiao-text" ng-if="subject.subjectRecommend">推荐</span>
+                        </span> 
+                    </div>
+                </div>
+            </section>
+        </script>
+
+
+        <!-- 找潮货-商品详情页-->
+        <script type="text/ng-template" id="find_goods/goods_detail.html">
+            <section class="goods-detail-container row text-center">
+                <div class="goods-pics-container col-xs-12">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" ng-repeat="goodsPic in goodsDetail.goodsCovers">
+                                <img ng-src="{{goodsPic.goodsCoverUrl}}">
+                            </div>
+                        </div>
+                        <!-- 如果需要分页器 -->
+                        <div class="swiper-pagination"></div>
+                        <div class="goods-sell col-xs-2">
+                            <span class="sell-num">已售{{goodsDetail.goodsSellNumber}}</span>
+                        </div>
+                        <div class="goods-video col-xs-2 text-right" ng-click="viewGoodsVideos(goodsDetail.goodsId)">
+                            <span class="iconfont icon-x-mpg"/>
+                            <span class="video-tip-text">视频</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-base-info-container col-xs-12">
+                    <span class="goods-title col-xs-12">{{goodsDetail.goodsName}}</span>
+                    <span class="goods-attr col-xs-12">{{goodsDetail.goodsIntro}}</span>
+                    <span class="goods-price-container col-xs-12">
+                        <span class="goods-price-new col-xs-5 col-xs-offset-1 text-right"><span class="yen">¥</span>{{goodsDetail.goodsPriceNew}}</span>
+                        <span class="goods-price-old col-xs-5 col-xs-offset-1 text-left"><span class="yen">¥</span>{{goodsDetail.goodsPriceOld}}</span>
+                    </span>
+                </div>
+                <span class="break-line-bar col-xs-12"/>
+                <div class="goods-promise-container col-xs-12">
+                    <span class="recommend-tip-text col-xs-12">我们承诺&nbsp;所有买家</span>
+                    <div class="goods-promise-item col-xs-3">
+                        <div class="promise-icon col-xs-12">
+                            <span class="iconfont icon-zheng"/>
+                        </div>
+                        <span class="promise-title col-xs-12">正品保障</span>
+                    </div>
+                    <div class="goods-promise-item col-xs-3">
+                        <div class="promise-icon col-xs-12">
+                            <span class="iconfont icon-7tian"/>
+                        </div>
+                        <span class="promise-title col-xs-12">7天发货</span>
+                    </div>
+                    <div class="goods-promise-item col-xs-3">
+                        <div class="promise-icon col-xs-12">  
+                            <span class="iconfont icon-wuliu"/>
+                        </div>
+                        <span class="promise-title col-xs-12">物流保障</span>
+                    </div>
+                    <div class="goods-promise-item col-xs-3">
+                        <div class="promise-icon col-xs-12">
+                            <span class="iconfont icon-baozhang"/>
+                        </div>
+                        <span class="promise-title col-xs-12">服务保障</span>
+                    </div>
+                </div>
+                <span class="break-line-bar col-xs-12"/>
+                <div class="goods-store-container col-xs-12">
+                    <div class="store-icon col-xs-3">
+                        <img ng-src="{{goodsDetail.storeIcon}}">
+                    </div>
+                    <div class="store-main-info col-xs-7 text-left">
+                        <span class="store-detail-name col-xs-12">{{goodsDetail.storeName}}</span>
+                        <span class="store-small-name col-xs-12">{{goodsDetail.storeChildName}}</span>
+                    </div>
+                    <div class="goods-goto-store col-xs-2 pull-right" ng-click="gotoStore(goodsDetail.storeId)">
+                        <span>进店</span>
+                    </div>
+                </div>
+                <span class="break-line-bar col-xs-12"/>
+                <div class="goods-comment-container col-xs-12">
+                    <div class="goods-comment-tip-container col-xs-12">
+                        <span class="comment-tip-text col-xs-8 text-left">  
+                            <div class="comment-tip-icon col-xs-1">
+                                <span class="iconfont icon-pinglun"/>
+                            </div>
+                            <span class="tip-text col-xs-10">他们都在说</span>
+                        </span>
+                        <span class="view-all col-xs-3 pull-right text-right" ng-click="goViewAllComment(goodsDetail.goodsId)">全部<span class="iconfont icon-jiantou-copy"/></span>
+                    </div>
+                    <div class="goods-comment-content-container col-xs-12">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide text-center goods-comment-item col-xs-11" ng-repeat="comment in goodsDetail.goodsComments">
+                                    <div class="comment-pic col-xs-4" ng-if="comment.commentCover != null && comment.commentCover != ''">
+                                        <img ng-src="{{comment.commentCover}}">
+                                    </div>
+                                    <div class="comment-info col-xs-8">
+                                        <div class="comment-user-info col-xs-12">
+                                            <div class="comment-user-face col-xs-2">
+                                                <img ng-src="{{comment.commentUserFace}}">
+                                            </div>
+                                            <span class="comment-user-name col-xs-10 text-left">{{comment.commentUserName}}</span>
+                                        </div>
+                                        <span class="comment-user-cont col-xs-12 text-left">{{comment.commentContent}}</span>
+                                    </div>
+                                    <span class="subject-jiaobiao iconfont icon-zuixin" ng-if="comment.commentIsNew">
+                                       <span class="subject-jiaobiao-text">最新</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <span class="break-line-bar col-xs-12"/>
+                <div class="goods-notes-container col-xs-12">
+                    <div class="comment-tip-text-container col-xs-12">
+                        <span class="comment-tip-text col-xs-8 text-left">  
+                            <div class="comment-tip-icon col-xs-1">
+                                <span class="iconfont icon-chaojibiji222"/>
+                            </div>
+                            <span class="tip-text col-xs-10">笔记</span>
+                        </span>
+                        <span class="view-all col-xs-3 pull-right text-right" ng-click="goViewAllNotes(goodsDetail.goodsId)">全部<span class="iconfont icon-jiantou-copy"/></span>
+                    </div>
+                    <div class="goods-notes-contents col-xs-12">
+                        <div class="goods-note-item col-xs-6" ng-repeat="note in goodsDetail.goodsNotes" ng-click="viewNoteDetail(note.noteId)">
+                            <img class="note-pic col-xs-12" ng-src="{{note.noteCover}}">
+                            <span class="goods-note-title col-xs-12">{{note.noteTitle}}</span>
+                            <span class="goods-note-cont col-xs-12">{{note.noteContent}}</span>
+                            <div class="goods-note-publish col-xs-12">
+                                <div class="comment-user-info col-xs-6 text-left">
+                                    <div class="comment-user-face col-xs-4">
+                                        <img ng-src="{{note.publishUserFace}}">
+                                    </div>
+                                    <span class="comment-user-name col-xs-8 text-left">{{note.publishUserName}}</span>
+                                </div>
+                                <div class="goods-note-like col-xs-6 text-right">
+                                    <span class="iconfont icon-dianzan1"/>
+                                    <span class="like-num">{{note.likeNum}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="break-line-bar col-xs-12"/>
+                <div class="goods-self-detail col-xs-12">
+                    <div class="goods-tab-bar col-xs-12">
+                        <span class="pic-word-attr col-xs-4 col-xs-offset-2" ng-click="goodsTabViewChange('pic-word')" ng-class="{'active':firstTabActive}">图文介绍</span>
+                        <span class="goods-params col-xs-4" ng-click="goodsTabViewChange('goods-param')" ng-class="{'active':!firstTabActive}">商品参数</span>
+                    </div>
+                    <div class="pic-word-attr-content col-xs-12" ng-if="firstTabActive">
+                        <article ng-bind-html="goodsPicWordContent"></article>
+                        <div class="back-to-top col-xs-3 text-center" ng-click="backToTop()">
+                            <span class="iconfont icon-dingbu"/>
+                            <span class="back-top-text col-xs-12">顶部</span>
+                        </div>
+                    </div>
+                    <div class="goods-params-content col-xs-12 text-left" ng-if="!firstTabActive">
+                        <span class="col-xs-12 param-item" ng-repeat="goodsParam in goodsDetail.goodsParamList">
+                            <span class="param-item-name col-xs-4">{{goodsParam.goodsParamName}}</span>
+                            <span class="param-item-value col-xs-8">{{goodsParam.goodsParamValue}}</span>
+                        </span>
+                    </div>
+                </div>
+                <nav class="navbar navbar-default navbar-fixed-bottom row">
+                      <div class="container-fluid">
+                        <div class="navbar-header">
+                            <div class="col-xs-2">
+                                <span class="navbar-brand iconfont icon-gouwuche"/>
+                            </div>
+                            <span class="join-cart col-xs-5" ng-click="joinCart('')">加入购物车</span>
+                            <span class="buy-goods col-xs-5" ng-click="buyGoods('')">立即购买</span>
+                        </div>
+                      </div>
+                </nav>
+            </section>
+        </script>
+
+
+
+
+
+        <!-- 全局弹出框参数设置 -->
+        <script type="text/javascript">
+            toastr.options={
+                "closeButton": false,
+                "preventDuplicates":true,
+                "timeOut":"100",
+                "positionClass" :'toast-top-center',
+                "extendedTimeOut": "1000"
+            }
+        </script>
+    </body>
+</html>
