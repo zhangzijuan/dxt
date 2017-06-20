@@ -1,10 +1,47 @@
 "use strict";
 
-var dxtApp = angular.module('dxtApp',['ngRoute','ngSanitize','common_directive']);
+
+angular.module('loadingService', [], function ($provide) {
+    $provide.factory('myHttpInterceptor', function ($q, $window) {
+        return {
+            'request': function (config) {
+                return config;
+            },
+
+            'requestError': function (rejection) {
+                console.error('requestError:', rejection);
+                return $q.reject(rejection);
+            },
+
+            'response': function (response) {
+                $('.loading').hide();
+                return response;
+            },
+
+            'responseError': function (rejection) {
+                return $q.reject(rejection);
+            }
+        };
+    });
+
+});
+
+
+var dxtApp = angular.module('dxtApp',['ngRoute','ngSanitize','loadingService','common_directive']);
 
 
 //页面路由配置
-dxtApp.config(['$routeProvider', function($routeProvider){
+dxtApp.config(['$routeProvider','$httpProvider', function($routeProvider,$httpProvider){
+
+    $httpProvider.interceptors.push('myHttpInterceptor');
+    var spinnerFunction = function (data, headers) {
+        if ($('body').find('section').size() === 0) {
+            $('.loading').show();
+        }
+    };
+    $httpProvider.defaults.transformRequest.push(spinnerFunction);
+
+
     $routeProvider
     .when('/',{templateUrl:'index'})
     //营业员-我的点赞列表

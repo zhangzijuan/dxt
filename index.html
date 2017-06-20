@@ -60,6 +60,11 @@
             </ul>
         </div>
 
+        <div class="loading">
+            <div class="ajax-loading-bg"></div>
+            <span class="ajax-loading"></span>
+        </div>
+
         <div class="dxt-content">
             <div class="container container-fluid" ng-view></div>
         </div>
@@ -129,7 +134,7 @@
 
         <!-- 找潮货首页 -->
         <script type="text/ng-template" id="find_goods/index.html">
-            <section class="find-goods-container">
+            <section class="find-goods-container" ng-if="lunBoList != null">
                 <div class="goods-header row">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">

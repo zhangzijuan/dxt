@@ -3,11 +3,14 @@
 //找潮货首页
 dxtApp.controller('FindGoodsCtrl',function($scope,$http,$location){
 
-	$('html,body').css({'backgroundColor':'#fff'});  
+	$('html,body').css({'backgroundColor':'#fff'}); 
 
+	
 	//获取轮播图片集合
 	$http.post('/data/find_goods/findGoodsIndex_lunBo.json',{}).success(function(data){
         if(data.success == true){
+        	
+        	$scope.lunBoList = data.lunBoList;
             $scope.lunBoList = data.lunBoList;
             var renderLunBoView = setTimeout(function(){
             	//获取数据后渲染
@@ -45,7 +48,6 @@ dxtApp.controller('FindGoodsCtrl',function($scope,$http,$location){
             toastr.success('数据加载失败！');
         }
     });
-
     //上拉刷新
     paginationPage($scope,'.goods-content-list','findGoodsList','findGoodsListPage');
 

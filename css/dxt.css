@@ -1044,7 +1044,7 @@ html{
 /*营业员-我的点赞列表end*/
 
 /*页面刷新加载样式*/
-.wx-index-loading, .dxt-list-loading{
+.dxt-list-loading{
     color: #cbcbcb;
     font-size: 1.3rem;
     line-height: 2rem;
@@ -1052,11 +1052,145 @@ html{
     padding-top: 1rem;
     text-align: center;
 }
-.wx-index-loading img, .dxt-list-loading img{
+.dxt-list-loading img{
     height: 1.6rem;
     margin-right: 0.5rem;
     width: 1.6rem;
 }
+.ajax-loading{
+    width: 2rem;
+    height: 2rem;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.ajax-loading{
+    background-image: url("/image/ajax_loading.png");
+    position: absolute;
+    top: 15rem;
+    left: 16.5rem;
+    animation: loading-animate 2s linear 0 infinite;
+    -moz-animation: loading-animate 2s linear 0 infinite;
+    -webkit-animation: loading-animate 2s linear 0 infinite;
+    -o-animation: loading-animate 2s linear 0 infinite;
+    animation-fill-mode: both;
+    -webkit-animation-fill-mode:both;
+}
+
+@keyframes loading-animate{
+    100% {transform:rotate(360deg);}
+}
+
+@-webkit-keyframes loading-animate{
+    100% {-webkit-transform:rotate(360deg);}
+}
+
+@-moz-keyframes loading-animate{
+    100% {-moz-transform:rotate(360deg);}
+}
+
+@-o-keyframes loading-animate{
+    100% {-o-transform:rotate(360deg);}
+}
+
+
+@keyframes shake{
+    25% {
+        transform: rotate(10deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@-webkit-keyframes shake{
+    25% {
+        -webkit-transform: rotate(10deg);
+    }
+    75% {
+        -webkit-transform: rotate(-10deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+@-moz-keyframes shake{
+    25% {
+        -webkit-transform: rotate(10deg);
+    }
+    75% {
+        -webkit-transform: rotate(-10deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+@-o-keyframes shake{
+    25% {
+        -webkit-transform: rotate(10deg);
+    }
+    75% {
+        -webkit-transform: rotate(-10deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+@keyframes left-shadow-scale{
+    25% {transform: scale(1.5);}
+    75% {transform: scale(0.5);}
+    100% {transform: rotate(0deg);}
+}
+
+@-webkit-keyframes left-shadow-scale{
+    25% {-webkit-transform: scale(1.5);}
+    75% {-webkit-transform: scale(0.5);}
+    100% {-webkit-transform: rotate(0deg);}
+}
+
+@-moz-keyframes left-shadow-scale{
+    25% {-webkit-transform: scale(1.5);}
+    75% {-webkit-transform: scale(0.5);}
+    100% {-webkit-transform: scale(0deg);}
+}
+
+@-o-keyframes left-shadow-scale{
+    25% {-webkit-transform: scale(1.5deg);}
+    75% { -webkit-transform: scale(0.5deg);}
+    100% {-webkit-transform: scale(0deg);}
+}
+
+@keyframes right-shadow-scale{
+    25% {transform: scale(0.5);}
+    75% {transform: scale(1.5);}
+    100% {transform: rotate(0deg);}
+}
+
+@-webkit-keyframes right-shadow-scale{
+    25% {-webkit-transform: scale(0.5);}
+    75% {-webkit-transform: scale(1.5);}
+    100% {-webkit-transform: rotate(0deg);}
+}
+
+@-moz-keyframes right-shadow-scale{
+    25% {-webkit-transform: scale(0.5);}
+    75% {-webkit-transform: scale(1.5);}
+    100% {-webkit-transform: scale(0deg);}
+}
+
+@-o-keyframes right-shadow-scale{
+    25% {-webkit-transform: scale(0.5deg);}
+    75% { -webkit-transform: scale(1.5deg);}
+    100% {-webkit-transform: scale(0deg);}
+}
+
+
 
 /*弹出消息样式*/
 #toast-container{
