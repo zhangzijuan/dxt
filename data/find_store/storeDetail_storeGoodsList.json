@@ -1,62 +1,68 @@
 {	
 	"success":true,
-    "storeGoodsList": [
-        {
-            "goodsId":"1",
-            "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
-            "goodsName":"Apple iphone 7",
-            "goodsStr":"【现货】【明星款】果粉必备红色特别版",
-            "goodsPriceNew":5688,
-            "goodsPriceOld":6200
-        },
-        {
-            "goodsId":"2",
-            "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
-            "goodsName":"Apple iphone 7",
-            "goodsStr":"【现货】【明星款】果粉必备红色特别版",
-            "goodsPriceNew":5688,
-            "goodsPriceOld":6200
-        },
-        {
-            "goodsId":"3",
-            "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
-            "goodsName":"Apple iphone 7",
-            "goodsStr":"【现货】【明星款】果粉必备红色特别版",
-            "goodsPriceNew":5688,
-            "goodsPriceOld":6200
-        },
-        {
-            "goodsId":"4",
-            "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
-            "goodsName":"Apple iphone 7",
-            "goodsStr":"【现货】【明星款】果粉必备红色特别版",
-            "goodsPriceNew":5688,
-            "goodsPriceOld":6200
-        },
-        {
-            "goodsId":"5",
-            "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
-            "goodsName":"Apple iphone 7",
-            "goodsStr":"【现货】【明星款】果粉必备红色特别版",
-            "goodsPriceNew":5688,
-            "goodsPriceOld":6200
-        },
-        {
-            "goodsId":"6",
-            "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
-            "goodsName":"Apple iphone 7",
-            "goodsStr":"【现货】【明星款】果粉必备红色特别版",
-            "goodsPriceNew":5688,
-            "goodsPriceOld":6200
-        },
-        {
-            "goodsId":"7",
-            "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
-            "goodsName":"Apple iphone 7",
-            "goodsStr":"【现货】【明星款】果粉必备红色特别版",
-            "goodsPriceNew":5688,
-            "goodsPriceOld":6200
-        }
-        
-    ]
+    "storeGoodsListPage":{
+        "pageNo": 1,
+        "pageSize":10,
+        "totalPages":2,
+        "totalSize":30,
+        "rows": [
+            {
+                "goodsId":"1",
+                "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
+                "goodsName":"Apple iphone 7",
+                "goodsStr":"【现货】【明星款】果粉必备红色特别版",
+                "goodsPriceNew":5688,
+                "goodsPriceOld":6200
+            },
+            {
+                "goodsId":"2",
+                "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
+                "goodsName":"Apple iphone 7",
+                "goodsStr":"【现货】【明星款】果粉必备红色特别版",
+                "goodsPriceNew":5688,
+                "goodsPriceOld":6200
+            },
+            {
+                "goodsId":"3",
+                "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
+                "goodsName":"Apple iphone 7",
+                "goodsStr":"【现货】【明星款】果粉必备红色特别版",
+                "goodsPriceNew":5688,
+                "goodsPriceOld":6200
+            },
+            {
+                "goodsId":"4",
+                "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
+                "goodsName":"Apple iphone 7",
+                "goodsStr":"【现货】【明星款】果粉必备红色特别版",
+                "goodsPriceNew":5688,
+                "goodsPriceOld":6200
+            },
+            {
+                "goodsId":"5",
+                "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
+                "goodsName":"Apple iphone 7",
+                "goodsStr":"【现货】【明星款】果粉必备红色特别版",
+                "goodsPriceNew":5688,
+                "goodsPriceOld":6200
+            },
+            {
+                "goodsId":"6",
+                "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
+                "goodsName":"Apple iphone 7",
+                "goodsStr":"【现货】【明星款】果粉必备红色特别版",
+                "goodsPriceNew":5688,
+                "goodsPriceOld":6200
+            },
+            {
+                "goodsId":"7",
+                "goodsCover": "/image/find_store/B519A2D2-1CA9-4591-B643-C356BE155898.png",
+                "goodsName":"Apple iphone 7",
+                "goodsStr":"【现货】【明星款】果粉必备红色特别版",
+                "goodsPriceNew":5688,
+                "goodsPriceOld":6200
+            }
+            
+        ]
+    }
 }

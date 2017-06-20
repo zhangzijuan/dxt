@@ -4,7 +4,7 @@
 dxtApp.controller('FindStoreCtrl',function($scope,$http,$location){
     $('html,body').css({'backgroundColor':'#fff'});  
 
-    var renderLunBoView = function (){ 
+    $scope.renderStoreListView = function (){ 
         setTimeout(function(){
                 //获取数据后渲染
                 var mySwiper = new Swiper ('.swiper-container', {
@@ -18,21 +18,27 @@ dxtApp.controller('FindStoreCtrl',function($scope,$http,$location){
             },100);
     }
 
+    $scope.url = '/data/find_store/findStore_indexList.json';
 	//获取附近店铺列表数据
-	$http.post('/data/find_store/findStore_indexList.json',{}).success(function(data){
+	$http.post($scope.url,{}).success(function(data){
         if(data.success == true){
-            $scope.storeItemList = data.storeItemList;
-            renderLunBoView();
-
+            $scope.pageNo = data.storeListPage.pageNo;
+            $scope.totalPages = data.storeListPage.totalPages;
+            $scope.totalSize = data.storeListPage.totalSize;
+            $scope.currentList = $scope.storeItemList = data.storeListPage.rows;
+            $scope.renderStoreListView();
         }else{
             toastr.success('数据加载失败！');
         }
     }); 
 
+    //上拉刷新
+    paginationPage($scope,'.find-store-content','storeItemList','storeListPage');
+
     //查看全部商铺
-    $scope.viewAllStore = function(){
-        toastr.success('查看全部店铺啦！');
-    }    
+    // $scope.viewAllStore = function(){
+    //     toastr.success('查看全部店铺啦！');
+    // }    
 
     //收藏或者取消收藏
     $scope.collectStore = function(storeId){
@@ -49,8 +55,11 @@ dxtApp.controller('FindStoreCtrl',function($scope,$http,$location){
 
 
 //寻好店-店铺详情页面
-dxtApp.controller('StoreDetailCtrl',function($scope,$http,$location){
+dxtApp.controller('StoreDetailCtrl',function($scope,$http,$location,$routeParams){
     $('html,body').css({'backgroundColor':'#fff'});  
+
+    var storeId = $routeParams.storeId;
+
     $scope.firstTabActive = true;
 
     $scope.storeInnerPicRender = function (){ 
@@ -98,15 +107,22 @@ dxtApp.controller('StoreDetailCtrl',function($scope,$http,$location){
         }
     }); 
 
-
+    $scope.url = '/data/find_store/storeDetail_storeGoodsList.json';
     //获取店铺商品列表数据
-    $http.post('/data/find_store/storeDetail_storeGoodsList.json',{}).success(function(data){
+    $http.post($scope.url,{}).success(function(data){
         if(data.success == true){
-            $scope.storeGoodsList = data.storeGoodsList;
+            $scope.pageNo = data.storeGoodsListPage.pageNo;
+            $scope.totalPages = data.storeGoodsListPage.totalPages;
+            $scope.totalSize = data.storeGoodsListPage.totalSize;
+            $scope.currentList = $scope.storeGoodsList = data.storeGoodsListPage.rows;
         }else{
             toastr.success('数据加载失败！');
         }
     }); 
+
+    //上拉刷新
+    paginationPage($scope,'.store-goods-list','storeGoodsList','storeGoodsListPage');
+
     
     //简介和商品bar切换事件
     $scope.tabChange = function(type){

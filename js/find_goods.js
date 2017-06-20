@@ -1,7 +1,7 @@
 "use strict";
 
 //找潮货首页
-dxtApp.controller('FindGoodsCtrl',function($scope,$http){
+dxtApp.controller('FindGoodsCtrl',function($scope,$http,$location){
 
 	$('html,body').css({'backgroundColor':'#fff'});  
 
@@ -33,28 +33,36 @@ dxtApp.controller('FindGoodsCtrl',function($scope,$http){
         }
     });     
 
+	$scope.url = '/data/find_goods/findGoodsIndex_goodsList.json';
 	//获取商品数据集合
-	$http.post('/data/find_goods/findGoodsIndex_goodsList.json',{}).success(function(data){
+	$http.post($scope.url,{}).success(function(data){
         if(data.success == true){
-            $scope.findGoodsList = data.findGoodsList;
+        	$scope.pageNo = data.findGoodsListPage.pageNo;
+            $scope.totalPages = data.findGoodsListPage.totalPages;
+            $scope.totalSize = data.findGoodsListPage.totalSize;
+            $scope.currentList = $scope.findGoodsList = data.findGoodsListPage.rows;
         }else{
             toastr.success('数据加载失败！');
         }
     });
 
-	//跳转至优选商铺界面
+    //上拉刷新
+    paginationPage($scope,'.goods-content-list','findGoodsList','findGoodsListPage');
+
+	//跳转商品详情界面
     $scope.goodsItemClick = function(goodsId){
-    	toastr.success(goodsId);
+    	$location.path('/find_goods/goods_detail/'+goodsId);
     }
 
 });
 
 
-
 //商品详情界面
-dxtApp.controller('GoodsDetailCtrl',function($scope,$http,$sce,$location){
+dxtApp.controller('GoodsDetailCtrl',function($scope,$http,$sce,$location,$routeParams){
 
 	$('html,body').css({'backgroundColor':'#fff'});  
+
+	var goodsId = $routeParams.goodsId;
 
 	$scope.firstTabActive = true;
 
@@ -130,7 +138,7 @@ dxtApp.controller('GoodsDetailCtrl',function($scope,$http,$sce,$location){
 
 	//查看商品的视频列表
 	$scope.viewGoodsVideos = function(goodsId){
-		toastr.success('查看商品的视频列表啦！');
+		$location.path('/find_goods/goods_videos/'+goodsId);
 	}
 
 	//进店看看
@@ -186,5 +194,23 @@ dxtApp.controller('GoodsDetailCtrl',function($scope,$http,$sce,$location){
 	$scope.buyGoods = function(goodsId){
 		toastr.success('立即购买商品');
 	}
+
+});
+
+
+//商品详情界面-商品视频列表
+dxtApp.controller('GoodsVideosCtrl',function($scope,$http,$location,$routeParams){
+	$('html,body').css({'backgroundColor':'#fff'}); 
+
+	var goodsId = $routeParams.goodsId;
+	
+	//获取商品视频集合
+	$http.post('/data/find_goods/goodsDetail_goodsVideoList.json',{}).success(function(data){
+        if(data.success == true){
+            $scope.goodsVideoList = data.goodsVideoList;
+        }else{
+            toastr.success('数据加载失败！');
+        }
+    });
 
 });

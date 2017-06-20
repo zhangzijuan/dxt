@@ -1,0 +1,29 @@
+{	
+	"success":true,
+    "goodsVideoList": [
+        {
+            "goodsId":"1",
+            "videoUrl": "/video/video1.mp4",
+            "videoTitle":"使用iphone7拍摄的窍门？",
+            "createTime":"06-15 09:50"
+        },
+        {
+            "goodsId":"2",
+            "videoUrl": "/video/video2.mp4",
+            "videoTitle":"苹果ios 10 操作体验视频（1）",
+            "createTime":"06-15 09:50"
+        },
+        {
+            "goodsId":"3",
+            "videoUrl": "/video/video3.mp4",
+            "videoTitle":"苹果ios 10 操作体验视频（2）",
+            "createTime":"06-15 09:50"
+        },
+        {
+            "goodsId":"4",
+            "videoUrl": "/video/video2.mp4",
+            "videoTitle":"苹果ios 10 操作体验视频（3）",
+            "createTime":"06-15 09:50"
+        }
+    ]
+}

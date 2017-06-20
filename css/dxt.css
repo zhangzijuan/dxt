@@ -211,7 +211,10 @@ html{
 .comment-info,.comment-user-info ,.comment-user-face,
 .comment-user-name,.comment-user-cont,.goods-notes-contents,
 .goods-note-item,.note-pic,.comment-user-info,
-.goods-note-like,.goods-notes-container,.goods-self-detail,.goods-tab-bar{
+.goods-note-like,.goods-notes-container,.goods-self-detail,.goods-tab-bar,
+.goods-videos-container .goods-video-item,
+.goods-videos-container .goods-video,.goods-video-info .video-title,
+.goods-video-info .video-create-time{
 	padding: 0;
 }
 .goods-store-container .store-main-info .store-detail-name{
@@ -407,6 +410,24 @@ html{
 }
 .back-to-top .back-top-text{
 	margin-top: -0.9rem;
+}
+.goods-videos-container video{
+	width: 100%;
+}
+.goods-videos-container .goods-video-info{
+	padding: 0.8rem 1rem;
+}
+.goods-video-info .video-title{
+	font-size: 1.6rem;
+	color: #333;
+	overflow: hidden;
+	white-space: nowrap; 
+	-o-text-overflow:ellipsis;
+	text-overflow:ellipsis;
+}
+.goods-video-info .video-create-time{
+	font-size: 1.4rem;
+	color: #b6b6b6;
 }
 
 /*找潮货end*/
@@ -900,7 +921,7 @@ html{
 /*看看end*/
 
 /*营业员-我的点赞列表start*/
-.thumb-up-title,.thumb-up-tip{
+.thumb-up-title,.thumb-up-tip,.thumb-up-item-content{
 	padding: 0;
 }
 .seller-thumb-up-container{
@@ -1022,7 +1043,20 @@ html{
 
 /*营业员-我的点赞列表end*/
 
-
+/*页面刷新加载样式*/
+.wx-index-loading, .dxt-list-loading{
+    color: #cbcbcb;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    text-align: center;
+}
+.wx-index-loading img, .dxt-list-loading img{
+    height: 1.6rem;
+    margin-right: 0.5rem;
+    width: 1.6rem;
+}
 
 /*弹出消息样式*/
 #toast-container{

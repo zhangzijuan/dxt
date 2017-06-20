@@ -1,33 +1,39 @@
 {	
 	"success":true,
-    "findGoodsList": [
-        {
-            "goodsId":"1",
-            "goodsPic": "/image/find_goods/534A3527-6709-4A1C-8533-2B9B00072FEC.png",
-            "goodsName":"苹果iphone7",
-            "goodsStr":"果粉必备红色特别版中国移动电信联通全网通最低价",
-            "noteNum":24
-        },
-        {
-            "goodsId":"2",
-            "goodsPic": "/image/find_goods/B359C27E-617A-4D44-9174-5D19F3EEA443.png",
-            "goodsName":"魅族 NOTE 5",
-            "goodsStr":"果粉必备红色特别版中国移动电信联通全网通最低价",
-            "noteNum":30
-        },
-        {
-            "goodsId":"3",
-            "goodsPic": "/image/find_goods/534A3527-6709-4A1C-8533-2B9B00072FEC.png",
-            "goodsName":"华为荣耀V9",
-            "goodsStr":"果粉必备红色特别版中国移动电信联通全网通最低价",
-            "noteNum":50
-        },
-        {
-            "goodsId":"4",
-            "goodsPic": "/image/find_goods/B359C27E-617A-4D44-9174-5D19F3EEA443.png",
-            "goodsName":"魅族 NOTE 6",
-            "goodsStr":"果粉必备红色特别版中国移动电信联通全网通最低价",
-            "noteNum":10
-        }
-    ]
+    "findGoodsListPage":{
+        "pageNo": 1,
+        "pageSize":10,
+        "totalPages":2,
+        "totalSize":30,
+        "rows": [
+            {
+                "goodsId":"1",
+                "goodsPic": "/image/find_goods/534A3527-6709-4A1C-8533-2B9B00072FEC.png",
+                "goodsName":"苹果iphone7",
+                "goodsStr":"果粉必备红色特别版中国移动电信联通全网通最低价",
+                "noteNum":24
+            },
+            {
+                "goodsId":"2",
+                "goodsPic": "/image/find_goods/B359C27E-617A-4D44-9174-5D19F3EEA443.png",
+                "goodsName":"魅族 NOTE 5",
+                "goodsStr":"果粉必备红色特别版中国移动电信联通全网通最低价",
+                "noteNum":30
+            },
+            {
+                "goodsId":"3",
+                "goodsPic": "/image/find_goods/534A3527-6709-4A1C-8533-2B9B00072FEC.png",
+                "goodsName":"华为荣耀V9",
+                "goodsStr":"果粉必备红色特别版中国移动电信联通全网通最低价",
+                "noteNum":50
+            },
+            {
+                "goodsId":"4",
+                "goodsPic": "/image/find_goods/B359C27E-617A-4D44-9174-5D19F3EEA443.png",
+                "goodsName":"魅族 NOTE 6",
+                "goodsStr":"果粉必备红色特别版中国移动电信联通全网通最低价",
+                "noteNum":10
+            }
+        ]
+    }
 }

@@ -38,6 +38,7 @@
         <script src="js/common/iscroll.min.js"></script>
         <script type="text/javascript" src="js/dxt_globle.js"></script>
         <script type="text/javascript" src="js/dxt_directive.js"></script>
+        <script type="text/javascript" src="js/dxt_pagination.js"></script>
         <script type="text/javascript" src="js/find_goods.js"></script>
         <script type="text/javascript" src="js/find_store.js"></script>
         <script type="text/javascript" src="js/look_something.js"></script>
@@ -50,11 +51,12 @@
                 <li><a href="#/">首页</a></li>
                 <li><a href="#/find_goods">找潮货首页 </a></li>
                 <li><a href="#/find_goods/goods_detail/1">找潮货-商品详情页</a></li>
+                <li><a href="#/find_goods/goods_videos/1">找潮货-商品详情页-商品视频列表</a></li>
                 <li><a href="#/find_store">寻好店首页 </a></li>
                 <li><a href="#/find_store/1">寻好店-店铺详情页</a></li>
                 <li><a href="#/look_something">看看首页</a></li>
                 <li><a href="#/my_seller/thumb_up_list">营业员-我的点赞列表</a></li>
-                <li><a href="#/my_seller/search/iphone6">营业员-选择（搜索）商品</a></li>
+                <li><a href="#/my_seller/select_search_goods">营业员-选择（搜索）商品</a></li>
             </ul>
         </div>
 
@@ -70,12 +72,20 @@
         <!-- 营业员-我的点赞列表-->
         <script type="text/ng-template" id="my_seller/thumb_up_list.html">
             <section class="seller-thumb-up-container row">
-                <div class="thumb-up-item col-xs-12" ng-repeat="thumbUp in thumbUpList" ng-click="viewNoteDetail(thumbUp.thumbUpNoteId)">
-                    <span class="thumb-up-title col-xs-9">{{thumbUp.thumbUpNoteTitle}}</span>
-                    <span class="thumb-up-tip col-xs-2 col-xs-offset-1">
-                        <span class="iconfont icon-dianzan1"/>
-                        <span class="thumb-up-num">{{thumbUp.thumbUpNum}}</span>
-                    </span>
+                <div class="thumb-up-item-content col-xs-12">
+                    <div class="thumb-up-item col-xs-12" ng-repeat="thumbUp in thumbUpList" ng-click="viewNoteDetail(thumbUp.thumbUpNoteId)">
+                        <span class="thumb-up-title col-xs-9">{{thumbUp.thumbUpNoteTitle}}</span>
+                        <span class="thumb-up-tip col-xs-2 col-xs-offset-1">
+                            <span class="iconfont icon-dianzan1"/>
+                            <span class="thumb-up-num">{{thumbUp.thumbUpNum}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="dxt-list-loading col-xs-12"  ng-show="bottomPrompt">
+                    <div ng-show="bottomShow">
+                        <img ng-src="/image/loading.gif" alt="loading"/>加载中
+                    </div>
+                    <div ng-show="!bottomShow">-&nbsp;已经到底了&nbsp;-</div>
                 </div>
             </section>
         </script>
@@ -102,12 +112,18 @@
                     </div>       
                 </div>
                 <div class="search-result-list-container col-xs-12">
-                        <div class="search-result-item col-xs-12" ng-repeat="searchResult in searchResultList" search-select-goods>
-                            <span class="goods-name col-xs-8">{{searchResult.goodsName}}</span>
-                            <span class="iconfont col-xs-2 col-xs-offset-2
-                            text-right"/>
-                        </div>
-                    </div> 
+                    <div class="search-result-item col-xs-12" ng-repeat="searchResult in searchResultList" search-select-goods>
+                        <span class="goods-name col-xs-8">{{searchResult.goodsName}}</span>
+                        <span class="iconfont col-xs-2 col-xs-offset-2
+                        text-right"/>
+                    </div>
+                </div>
+                <div class="dxt-list-loading col-xs-12"  ng-show="bottomPrompt">
+                    <div ng-show="bottomShow">
+                        <img ng-src="/image/loading.gif" alt="loading"/>加载中
+                    </div>
+                    <div ng-show="!bottomShow">-&nbsp;已经到底了&nbsp;-</div>
+                </div>
             </section>
         </script>
 
@@ -146,6 +162,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="dxt-list-loading col-xs-12"  ng-show="bottomPrompt">
+                    <div ng-show="bottomShow">
+                        <img ng-src="/image/loading.gif" alt="loading"/>加载中
+                    </div>
+                    <div ng-show="!bottomShow">-&nbsp;已经到底了&nbsp;-</div>
+                </div>
             </section>
         </script>
 
@@ -155,41 +177,45 @@
                 <div class="find-store-tip-bar col-xs-12">
                     <span class="iconfont icon-dianpu"/>
                     <span class="select-tip">为您挑选</span>
-                    <span class="view-all pull-right" ng-click="viewAllStore()">全部<span class="iconfont icon-jiantou-copy"/></span>
+                    <!-- <span class="view-all pull-right" ng-click="viewAllStore()">全部<span class="iconfont icon-jiantou-copy"/></span> -->
                 </div>
-                <div class="find-store-content col-xs-12" page-name="find-store-content" page-scroll>
-                    <div class="page-scroll-content">
-                        <div class="find-store-item col-xs-12" ng-repeat="storeItem in storeItemList">
-                            <div class="store-pic-container col-xs-12">
-                                <img ng-src="{{storeItem.storeCover}}"/>
-                                <span class="store-from"><span class="iconfont icon-location"/><span class="store-pic-tip-text">距离{{storeItem.distanceMe}}km</span></span>
-                                <div class="store-collect" ng-click="collectStore(storeItem.storeId)">
-                                    <span class="iconfont" ng-class="{'icon-g':storeItem.collected,'icon-favorite':!storeItem.collected}"/><span class="store-pic-tip-text">收藏</span>
-                                </div>
+                <div class="find-store-content col-xs-12">
+                    <div class="find-store-item col-xs-12" ng-repeat="storeItem in storeItemList">
+                        <div class="store-pic-container col-xs-12">
+                            <img ng-src="{{storeItem.storeCover}}"/>
+                            <span class="store-from"><span class="iconfont icon-location"/><span class="store-pic-tip-text">距离{{storeItem.distanceMe}}km</span></span>
+                            <div class="store-collect" ng-click="collectStore(storeItem.storeId)">
+                                <span class="iconfont" ng-class="{'icon-g':storeItem.collected,'icon-favorite':!storeItem.collected}"/><span class="store-pic-tip-text">收藏</span>
                             </div>
-                            <div class="store-intro-container col-xs-12">
-                                <span class="store-name col-xs-12 text-center">{{storeItem.storeName}}</span>
-                                <span class="store-intro col-xs-12">{{storeItem.storeStr}}</span>
-                            </div>
-                            <div class="store-recommended-consultant-container">
-                                <span class="recommend-tip-text col-xs-12 text-center">为您推荐的顾问</span>
-                                <div class="recommended-consultant-item col-xs-12 text-center">
-                                    <div class="swiper-container">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide single-consultant col-xs-2" ng-repeat="consultant in storeItem.recommendedConsultants">
-                                                <img ng-src="{{consultant.consultantFace}}">
-                                                <span class="consultant-name">{{consultant.consultantName}}</span>
-                                            </div>
+                        </div>
+                        <div class="store-intro-container col-xs-12">
+                            <span class="store-name col-xs-12 text-center">{{storeItem.storeName}}</span>
+                            <span class="store-intro col-xs-12">{{storeItem.storeStr}}</span>
+                        </div>
+                        <div class="store-recommended-consultant-container">
+                            <span class="recommend-tip-text col-xs-12 text-center">为您推荐的顾问</span>
+                            <div class="recommended-consultant-item col-xs-12 text-center">
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide single-consultant col-xs-2" ng-repeat="consultant in storeItem.recommendedConsultants">
+                                            <img ng-src="{{consultant.consultantFace}}">
+                                            <span class="consultant-name">{{consultant.consultantName}}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="goto-store-opt col-xs-12 text-center">
-                                <span class="go-to-store col-xs-6 col-xs-offset-3" ng-click="goStoreDetail(storeItem.storeId)">进店逛逛</span>
-                            </div>
-                            <span class="break-line-bar col-xs-12"/>
-                        </div> 
+                        </div>
+                        <div class="goto-store-opt col-xs-12 text-center">
+                            <span class="go-to-store col-xs-6 col-xs-offset-3" ng-click="goStoreDetail(storeItem.storeId)">进店逛逛</span>
+                        </div>
+                        <span class="break-line-bar col-xs-12"/>
                     </div>
+                </div>
+                <div class="dxt-list-loading col-xs-12"  ng-show="bottomPrompt">
+                    <div ng-show="bottomShow">
+                        <img ng-src="/image/loading.gif" alt="loading"/>加载中
+                    </div>
+                    <div ng-show="!bottomShow">-&nbsp;已经到底了&nbsp;-</div>
                 </div>
             </section>
         </script>
@@ -243,6 +269,12 @@
                                 <span class="goods-price-old col-xs-5"><span class="yen">¥</span>{{goods.goodsPriceOld}}</span>
                             </span>
                         </div>
+                    </div>
+                    <div class="dxt-list-loading col-xs-12"  ng-show="bottomPrompt">
+                        <div ng-show="bottomShow">
+                            <img ng-src="/image/loading.gif" alt="loading"/>加载中
+                        </div>
+                        <div ng-show="!bottomShow">-&nbsp;已经到底了&nbsp;-</div>
                     </div>
                 </div>
 
@@ -333,6 +365,12 @@
                            <span class="subject-jiaobiao-text" ng-if="subject.subjectRecommend">推荐</span>
                         </span> 
                     </div>
+                </div>
+                <div class="dxt-list-loading col-xs-12"  ng-show="bottomPrompt">
+                    <div ng-show="bottomShow">
+                        <img ng-src="/image/loading.gif" alt="loading"/>加载中
+                    </div>
+                    <div ng-show="!bottomShow">-&nbsp;已经到底了&nbsp;-</div>
                 </div>
             </section>
         </script>
@@ -505,6 +543,23 @@
                         </div>
                       </div>
                 </nav>
+            </section>
+        </script>
+
+
+        <!-- 找潮货-商品详情页-商品视频列表 -->
+        <script type="text/ng-template" id="find_goods/goods_videos.html">
+            <section class="goods-videos-container row">
+                <div class="goods-video-item col-xs-12" ng-repeat="goodsVideo in goodsVideoList">
+                    <div class="goods-video col-xs-12">
+                        <video ng-src="{{goodsVideo.videoUrl}}" controls="controls" poster=""></video>
+                    </div>
+                    <div class="goods-video-info col-xs-12">
+                        <span class="video-title col-xs-7">{{goodsVideo.videoTitle}}</span>
+                        <span class="video-create-time col-xs-5 text-right">{{goodsVideo.createTime}}</span>
+                    </div>
+                    <span ng-if="$index+1 < goodsVideoList.length" class="break-line-bar col-xs-12"/>
+                </div>
             </section>
         </script>
 

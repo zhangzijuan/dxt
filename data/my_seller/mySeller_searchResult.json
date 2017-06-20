@@ -1,70 +1,76 @@
 {	
 	"success":true,
-    "searchResultList": [
-        {
-            "goodsId":"1",
-            "goodsName": "iphone7"
-        },
-        {
-            "goodsId":"2",
-            "goodsName": "小米note2"
-        },
-        {
-            "goodsId":"3",
-            "goodsName": "荣耀v9"
-        },
-        {
-            "goodsId":"4",
-            "goodsName": "苹果7P"
-        },
-        {
-            "goodsId":"5",
-            "goodsName": "魅族s3"
-        },
-        {
-            "goodsId":"5",
-            "goodsName": "魅族s3"
-        },
-        {
-            "goodsId":"5",
-            "goodsName": "魅族s3"
-        },
-        {
-            "goodsId":"5",
-            "goodsName": "魅族s3"
-        },
-        {
-            "goodsId":"5",
-            "goodsName": "魅族s3"
-        },
-        {
-            "goodsId":"5",
-            "goodsName": "魅族s3"
-        },
-        {
-            "goodsId":"5",
-            "goodsName": "魅族s3"
-        },
-        {
-            "goodsId":"5",
-            "goodsName": "魅族s3"
-        },
-        {
-            "goodsId":"5",
-            "goodsName": "魅族s3"
-        },
-        {
-            "goodsId":"5",
-            "goodsName": "魅族s3"
-        },
-        {
-            "goodsId":"5",
-            "goodsName": "魅族s3"
-        },
-        {
-            "goodsId":"5",
-            "goodsName": "魅族s3"
-        }
+    "searchResultListPage":{
+        "pageNo": 1,
+        "pageSize":10,
+        "totalPages":2,
+        "totalSize":30,
+        "rows": [
+            {
+                "goodsId":"1",
+                "goodsName": "iphone7"
+            },
+            {
+                "goodsId":"2",
+                "goodsName": "小米note2"
+            },
+            {
+                "goodsId":"3",
+                "goodsName": "荣耀v9"
+            },
+            {
+                "goodsId":"4",
+                "goodsName": "苹果7P"
+            },
+            {
+                "goodsId":"5",
+                "goodsName": "魅族s3"
+            },
+            {
+                "goodsId":"5",
+                "goodsName": "魅族s3"
+            },
+            {
+                "goodsId":"5",
+                "goodsName": "魅族s3"
+            },
+            {
+                "goodsId":"5",
+                "goodsName": "魅族s3"
+            },
+            {
+                "goodsId":"5",
+                "goodsName": "魅族s3"
+            },
+            {
+                "goodsId":"5",
+                "goodsName": "魅族s3"
+            },
+            {
+                "goodsId":"5",
+                "goodsName": "魅族s3"
+            },
+            {
+                "goodsId":"5",
+                "goodsName": "魅族s3"
+            },
+            {
+                "goodsId":"5",
+                "goodsName": "魅族s3"
+            },
+            {
+                "goodsId":"5",
+                "goodsName": "魅族s3"
+            },
+            {
+                "goodsId":"5",
+                "goodsName": "魅族s3"
+            },
+            {
+                "goodsId":"5",
+                "goodsName": "魅族s3"
+            }
 
-    ]
+        ]
+    }
 }
