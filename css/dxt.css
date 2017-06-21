@@ -429,6 +429,69 @@ html{
 	font-size: 1.4rem;
 	color: #b6b6b6;
 }
+.manage-address-container{
+	border-top: 0.1rem solid #ddd;
+}
+.goods-address-item{
+	padding: 0;
+	background-color: #fff;
+}
+.no-first{
+	margin-top: 0.8rem;
+}
+.manage-address-container .goods-address{
+	padding: 1.5rem;
+	border-bottom: 0.1rem solid #ddd;	
+}
+.address-opt-bar{
+	padding: 1rem 1.5rem;
+}
+.goods-address span,.address-opt-bar div{
+	padding: 0;
+}
+.address-user-info{
+	color: #333;
+}
+.address-detail-info,.address-opt-bar{
+	color: #777;
+}
+.address-opt-bar span:nth-child(even){
+	font-size: 1.3rem;
+}
+.icon-quan{
+	font-size: 2rem;
+	color: #777;
+}
+.icon-xuanzedui{
+	font-size: 2rem;
+	color: #4395f7;
+}
+.address-opt-bar .icon-shanchu{
+	font-size: 1.8rem;
+}
+.address-opt-bar .edit-address {
+	margin-top: 0.2rem;
+}
+.address-opt-bar .icon-bianji2{
+	font-size: 1.5rem;
+}
+.address-opt-bar .default-text,.default-address-tip{
+	color: #4395f7;
+}
+.select-address-container .goods-address-item{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.4rem 1.2rem;
+}
+.select-address-container .goods-address{
+	padding: 0;
+	margin-left: 1.5rem;
+}
+.select-address-container .select-icon{
+	margin-left: -1.4rem;
+}
 
 /*找潮货end*/
 

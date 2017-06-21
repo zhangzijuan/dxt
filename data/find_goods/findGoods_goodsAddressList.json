@@ -1,0 +1,45 @@
+{   
+    "success":true,
+    "goodsAddressList": [
+        {
+            "goodsAddressId":"1",
+            "getGoodsUserName": "李敏",
+            "getGoodsUserPhone":"13965025668",
+            "getGoodsUserOfProvince":"安徽省",
+            "getGoodsUserOfCity":"合肥市",
+            "getGoodsUserOfArea":"政务区",
+            "detailAddress":"怀宁路天鹅湖万达2号写字楼1702室",
+            "defaultAddress":true
+        },
+        {
+            "goodsAddressId":"2",
+            "getGoodsUserName": "李敏",
+            "getGoodsUserPhone":"13965025668",
+            "getGoodsUserOfProvince":"安徽省",
+            "getGoodsUserOfCity":"六安市",
+            "getGoodsUserOfArea":"",
+            "detailAddress":"形成了可是打开文明时代发生的发生",
+            "defaultAddress":false 
+        },
+        {
+            "goodsAddressId":"3",
+            "getGoodsUserName": "张三",
+            "getGoodsUserPhone":"13386167259",
+            "getGoodsUserOfProvince":"河南省",
+            "getGoodsUserOfCity":"郑州市",
+            "getGoodsUserOfArea":"金水区",
+            "detailAddress":"文化路999号",
+            "defaultAddress":false
+        },
+        {
+            "goodsAddressId":"4",
+            "getGoodsUserName": "李四",
+            "getGoodsUserPhone":"15236927834",
+            "getGoodsUserOfProvince":"上海市",
+            "getGoodsUserOfCity":"上海市",
+            "getGoodsUserOfArea":"黄浦区",
+            "detailAddress":"象屿大厦三楼",
+            "defaultAddress":false
+        }
+    ]
+}

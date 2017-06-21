@@ -28,9 +28,9 @@ angular.module('common_directive',[])
                 scope.storeDetailInfo.recommendedConsultants[dataIndex].followed=followed;
                 scope.$apply();
                 //todo 调用后台接口更新粉丝状态
-                $.post('',{'consultant':dataId},function(data){
+                // $.post('',{'consultant':dataId},function(data){
 
-                });
+                // });
             },false);
         }
     }
@@ -69,6 +69,29 @@ angular.module('common_directive',[])
                 }else if($(element).hasClass('history-item')){
 
                     $(element).toggleClass('selected');  
+                }
+            });
+            
+        }
+    }
+})
+//找潮货-管理收货地址，设置默认地址
+.directive('setDefaultGetGoodsAddress',function(){
+    return {
+        link:function(scope, element, attrs){
+
+            var addressId = $(element).attr('data-id');
+            $(element).click(function(e) {
+                if($(element).find('.iconfont').hasClass('icon-quan')){
+                    $(element).parents('.manage-address-container').find('.set-default .iconfont').removeClass('icon-xuanzedui');
+                    $(element).parents('.manage-address-container').find('.set-default span:nth-child(even)').removeClass('default-text');
+                    $(element).parents('.manage-address-container').find('.set-default .iconfont').addClass('icon-quan');          
+                    $(element).find('.iconfont').addClass('icon-xuanzedui');
+                    $(element).find('span:nth-child(even)').addClass('default-text');
+                    //todo 调用后台接口修改默认地址   
+                    // $.post('',{'addressId':addressId},function(data){
+
+                    // }); 
                 }
             });
             

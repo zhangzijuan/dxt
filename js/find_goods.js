@@ -216,3 +216,53 @@ dxtApp.controller('GoodsVideosCtrl',function($scope,$http,$location,$routeParams
     });
 
 });
+
+
+//找潮货-选择收货地址
+dxtApp.controller('GoodsSelectAddressCtrl',function($scope,$http,$location,$routeParams){
+	$('html,body').css({'backgroundColor':'#efefef'}); 
+
+	$scope.selectedAddress = $routeParams.selectedAddressId;
+
+	//获取商品收货地址列表集合
+	$http.post('/data/find_goods/findGoods_goodsAddressList.json',{}).success(function(data){
+        if(data.success == true){
+            $scope.goodsAddressList = data.goodsAddressList;
+        }else{
+            toastr.success('数据加载失败！');
+        }
+    });
+
+	//点击选择新的收获地址
+    $scope.selectAddress = function(goodsAddress){
+    	toastr.success('调用原生接口返回确认订单界面修改选择的地址信息！');
+    }
+	
+});
+
+
+//找潮货-管理收货地址
+dxtApp.controller('ManageAddressCtrl',function($scope,$http,$location){
+	$('html,body').css({'backgroundColor':'#efefef'});
+	
+	//获取商品收货地址列表集合
+	$http.post('/data/find_goods/findGoods_goodsAddressList.json',{}).success(function(data){
+        if(data.success == true){
+            $scope.goodsAddressList = data.goodsAddressList;
+        }else{
+            toastr.success('数据加载失败！');
+        }
+    });
+
+	//删除商品收货地址
+    $scope.delAddress = function(goodsAddressId){
+    	toastr.success('调用后台接口删除收货地址！');
+    }
+
+    //编辑商品收货地址
+    $scope.editAddress = function(goodsAddressId){
+    	// $location.path('');
+    }
+	
+});
+

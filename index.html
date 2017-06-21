@@ -10,10 +10,10 @@
         <!-- 引入bootstrap.css -->
         <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
         <!-- 图标库css --> 
-        <link rel="stylesheet" href="http://at.alicdn.com/t/font_jj8msby5hkdl5wmi.css">
+        <link rel="stylesheet" href="http://at.alicdn.com/t/font_ged898yhw7b9.css">
         <!-- 图片轮播css -->
         <link rel="stylesheet" href="css/common/swiper-3.4.2.min.css">
-        <link rel="stylesheet" href="css/common/dropload.css">
+        <!-- <link rel="stylesheet" href="css/common/dropload.css"> -->
 
 
         <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
@@ -34,8 +34,8 @@
         <script type="text/javascript" src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
 
         <script type="text/javascript" src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-        <script src="js/common/dropload.min.js"></script>
-        <script src="js/common/iscroll.min.js"></script>
+        <!-- <script src="js/common/dropload.min.js"></script>
+        <script src="js/common/iscroll.min.js"></script> -->
         <script type="text/javascript" src="js/dxt_globle.js"></script>
         <script type="text/javascript" src="js/dxt_directive.js"></script>
         <script type="text/javascript" src="js/dxt_pagination.js"></script>
@@ -52,6 +52,8 @@
                 <li><a href="#/find_goods">找潮货首页 </a></li>
                 <li><a href="#/find_goods/goods_detail/1">找潮货-商品详情页</a></li>
                 <li><a href="#/find_goods/goods_videos/1">找潮货-商品详情页-商品视频列表</a></li>
+                <li><a href="#/find_goods/select_address/1">找潮货-选择收货地址</a></li>
+                <li><a href="#/find_goods/manage_address">找潮货-管理收货地址</a></li>
                 <li><a href="#/find_store">寻好店首页 </a></li>
                 <li><a href="#/find_store/1">寻好店-店铺详情页</a></li>
                 <li><a href="#/look_something">看看首页</a></li>
@@ -564,6 +566,51 @@
                         <span class="video-create-time col-xs-5 text-right">{{goodsVideo.createTime}}</span>
                     </div>
                     <span ng-if="$index+1 < goodsVideoList.length" class="break-line-bar col-xs-12"/>
+                </div>
+            </section>
+        </script>
+
+        <!-- 找潮货-选择收货地址 -->
+        <script type="text/ng-template" id="find_goods/select_address.html">
+            <section class="select-address-container row">
+                <div class="goods-address-item col-xs-12" ng-repeat="goodsAddress in goodsAddressList" ng-class="{'no-first':$index > 0}" ng-click="selectAddress(goodsAddress)">
+                    <div class="select-icon col-xs-1">
+                        <span class="selected-address iconfont icon-quan" ng-class="{'icon-quan':goodsAddress.goodsAddressId != selectedAddress,'icon-xuanzedui':goodsAddress.goodsAddressId == selectedAddress}"/>
+                    </div>
+                    <div class="goods-address col-xs-11 pull-right">
+                        <span class="address-user-info col-xs-12">{{goodsAddress.getGoodsUserName}}({{goodsAddress.getGoodsUserPhone}})</span>
+                        <span class="address-detail-info col-xs-12">
+                            <span ng-if="goodsAddress.defaultAddress" class="default-address-tip">[默认地址]</span>
+                            {{goodsAddress.getGoodsUserOfProvince}}&nbsp;{{goodsAddress.getGoodsUserOfCity}}&nbsp;{{goodsAddress.getGoodsUserOfArea}}&nbsp;{{goodsAddress.detailAddress}}
+                        </span>
+                    </div>
+                </div>
+            </section>
+        </script>
+
+        <!-- 找潮货-管理收货地址 -->
+        <script type="text/ng-template" id="find_goods/manage_address.html">
+            <section class="manage-address-container row">
+                <div class="goods-address-item col-xs-12" ng-repeat="goodsAddress in goodsAddressList" ng-class="{'no-first':$index > 0}">
+                    <div class="goods-address col-xs-12">
+                        <span class="address-user-info col-xs-12">{{goodsAddress.getGoodsUserName}}({{goodsAddress.getGoodsUserPhone}})</span>
+                        <span class="address-detail-info col-xs-12">{{goodsAddress.getGoodsUserOfProvince}}&nbsp;{{goodsAddress.getGoodsUserOfCity}}&nbsp;{{goodsAddress.getGoodsUserOfArea}}&nbsp;{{goodsAddress.detailAddress}}
+                        </span>
+                    </div>
+                    <div class="address-opt-bar col-xs-12">
+                        <div class="set-default col-xs-6" data-id="{{goodsAddress.goodsAddressId}}" set-default-get-goods-address>
+                            <span class="iconfont" ng-class={'icon-quan':!goodsAddress.defaultAddress,'icon-xuanzedui':goodsAddress.defaultAddress}/>
+                            <span ng-class={'default-text':goodsAddress.defaultAddress}>设为默认</span>
+                        </div>
+                        <div class="del-address col-xs-3 text-right" ng-click="delAddress(goodsAddress.goodsAddressId)">
+                            <span class="iconfont icon-shanchu"/>
+                            <span>删除</span>
+                        </div>
+                        <div class="edit-address col-xs-3 text-right" ng-click="editAddress(goodsAddress.goodsAddressId)">
+                            <span class="iconfont icon-bianji2"/>
+                            <span>编辑</span>
+                        </div>
+                    </div>
                 </div>
             </section>
         </script>
