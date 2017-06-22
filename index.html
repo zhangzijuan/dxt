@@ -7,13 +7,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="renderer" content="webkit">
 
+        <link rel="stylesheet" href="css/common/mui.css">
+        <link rel="stylesheet" href="css/common/mui.picker.css">
+        <link rel="stylesheet" href="css/common/mui.poppicker.css">
         <!-- 引入bootstrap.css -->
         <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
         <!-- 图标库css --> 
         <link rel="stylesheet" href="http://at.alicdn.com/t/font_ged898yhw7b9.css">
         <!-- 图片轮播css -->
         <link rel="stylesheet" href="css/common/swiper-3.4.2.min.css">
-        <!-- <link rel="stylesheet" href="css/common/dropload.css"> -->
 
 
         <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
@@ -34,8 +36,10 @@
         <script type="text/javascript" src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
 
         <script type="text/javascript" src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-        <!-- <script src="js/common/dropload.min.js"></script>
-        <script src="js/common/iscroll.min.js"></script> -->
+        <script src="js/common/self_mui.min.js"></script>
+        <script src="js/common/self_mui.picker.js"></script>
+        <script src="js/common/self_mui.poppicker.js"></script>
+        <script src="js/common/city.data.js"></script>
         <script type="text/javascript" src="js/dxt_globle.js"></script>
         <script type="text/javascript" src="js/dxt_directive.js"></script>
         <script type="text/javascript" src="js/dxt_pagination.js"></script>
@@ -52,8 +56,10 @@
                 <li><a href="#/find_goods">找潮货首页 </a></li>
                 <li><a href="#/find_goods/goods_detail/1">找潮货-商品详情页</a></li>
                 <li><a href="#/find_goods/goods_videos/1">找潮货-商品详情页-商品视频列表</a></li>
+                <li><a href="#/find_goods/select_store/1">找潮货-选择发货店铺</a></li>
                 <li><a href="#/find_goods/select_address/1">找潮货-选择收货地址</a></li>
                 <li><a href="#/find_goods/manage_address">找潮货-管理收货地址</a></li>
+                <li><a href="#/find_goods/addOrEdit_address/null">找潮货-添加或者编辑收获地址</a></li>
                 <li><a href="#/find_store">寻好店首页 </a></li>
                 <li><a href="#/find_store/1">寻好店-店铺详情页</a></li>
                 <li><a href="#/look_something">看看首页</a></li>
@@ -611,6 +617,75 @@
                             <span>编辑</span>
                         </div>
                     </div>
+                </div>
+            </section>
+        </script>
+
+        <!-- 找潮货-添加或者编辑收获地址 -->
+        <script type="text/ng-template" id="find_goods/addOrEdit_address.html">
+            <section class="add-edit-address-container row" select-user-area>
+                <div class="input-address-container col-xs-12">
+                    <form class="form-horizontal">
+                        <div class="user-name form-group col-xs-12">
+                            <label class="control-label col-xs-3" for="userName">收货人</label>
+                            <div class="input-view col-xs-9">
+                                <input type="text" class="form-control" id="userName" ng-model="address.getGoodsUserName" value="{{address.getGoodsUserName}}">
+                            </div>
+                        </div>
+                        <div class="user-iphone form-group col-xs-12">
+                            <label class="control-label col-xs-3" for="userIphone">联系电话</label>
+                            <div class="input-view col-xs-9">
+                                <input type="text" class="form-control" id="userIphone" ng-model="address.getGoodsUserPhone" value="{{address.getGoodsUserPhone}}">
+                            </div>
+                        </div>
+                        <div id="userArea" class="user-area form-group col-xs-12">
+                            <label class="control-label col-xs-3">所在区域</label>
+                            <div class="input-view-child col-xs-8">
+                                <span class="">{{address.getGoodsUserOfProvince}}&nbsp;{{address.getGoodsUserOfCity}}&nbsp;{{address.getGoodsUserOfArea}}&nbsp;</span>
+                            </div>
+                            <div class="select-area col-xs-3 text-right">
+                                <span>请选择</span><span class="iconfont icon-jiantou-copy"/>
+                            </div>
+                        </div>
+                        <div class="user-detail form-group col-xs-12">
+                            <textarea class="form-control" rows="3" placeholder="请填写详细地址，不少于5个字" ng-model="address.getGoodsDetail" value="{{address.getGoodsDetail}}"></textarea>
+                        </div>
+                    </form>
+                    <div class="save-address-btn col-xs-12 text-center" ng-click="saveAddress(address)">
+                        <a class="btn btn-default col-xs-12" role="button">保存</a>
+                    </div>
+                </div>
+            </section>
+        </script>
+
+        <!-- 找潮货-选择发货店铺 -->
+        <script type="text/ng-template" id="find_goods/select_store.html">
+            <section class="select-store-container row">
+                <div class="select-store-content col-xs-12">
+                    <div class="store-list-item col-xs-12" ng-repeat="store in storesList" data-id="{{store.storeId}}" ng-class="{'no-first':$index > 0}" search-select-goods>
+                        <div class="store-info-item col-xs-11">
+                            <div class="store-name-view">
+                                <span>{{store.storeName}}</span>
+                                <span>优惠价&nbsp;&nbsp;¥ {{store.storeLowPrice}}</span>
+                            </div>
+                            <div class="store-address">
+                                <span class="iconfont icon-didian"/>
+                                <span>{{store.storeAddress}}</span>
+                            </div>
+                        </div>
+                        <div class="select-icon col-xs-1">
+                            <span class="iconfont icon-quan"/>
+                        </div>
+                    </div>
+                    <div class="dxt-list-loading col-xs-12"  ng-show="bottomPrompt">
+                        <div ng-show="bottomShow">
+                            <img ng-src="/image/loading.gif" alt="loading"/>加载中
+                        </div>
+                        <div ng-show="!bottomShow">-&nbsp;已经到底了&nbsp;-</div>
+                    </div>
+                </div>
+                <div class="save-address-btn col-xs-12 text-center" ng-click="saveSelectStore()">
+                        <a class="btn btn-default col-xs-12" role="button">下一步</a>
                 </div>
             </section>
         </script>

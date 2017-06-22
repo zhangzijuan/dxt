@@ -54,10 +54,14 @@ dxtApp.config(['$routeProvider','$httpProvider', function($routeProvider,$httpPr
     .when('/find_goods/goods_detail/:goodsId',{templateUrl:'find_goods/goods_detail.html',controller:'GoodsDetailCtrl'})
     //找潮货-商品详情页-商品视频列表
     .when('/find_goods/goods_videos/:goodsId',{templateUrl:'find_goods/goods_videos.html',controller:'GoodsVideosCtrl'})
+    //找潮货-选择发货店铺
+    .when('/find_goods/select_store/:goodsId',{templateUrl:'find_goods/select_store.html',controller:'SelectStoreCtrl'})
     //找潮货-管理收货地址
     .when('/find_goods/manage_address',{templateUrl:'find_goods/manage_address.html',controller:'ManageAddressCtrl'})
     //找潮货-选择收货地址
     .when('/find_goods/select_address/:selectedAddressId',{templateUrl:'find_goods/select_address.html',controller:'GoodsSelectAddressCtrl'})
+    //找潮货-添加或者编辑收获地址
+    .when('/find_goods/addOrEdit_address/:addressId',{templateUrl:'find_goods/addOrEdit_address.html',controller:'AddOrEditAddressCtrl'})
     //寻好店首页
     .when('/find_store',{templateUrl:'find_store/index.html',controller:'FindStoreCtrl'})
     //寻好店-店铺详情页面

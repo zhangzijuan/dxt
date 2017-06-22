@@ -69,6 +69,13 @@ angular.module('common_directive',[])
                 }else if($(element).hasClass('history-item')){
 
                     $(element).toggleClass('selected');  
+                }else if($(element).hasClass('store-list-item')){
+                    $(element).siblings('div').find('.select-icon span').removeClass('icon-xuanzedui');
+                    $(element).siblings('div').find('.select-icon span').addClass('icon-quan');
+                    $(element).find('.select-icon span').removeClass('icon-quan');
+                    $(element).find('.select-icon span').addClass('icon-xuanzedui');
+                    scope.selectedStoreId = $(element).attr('data-id');
+                    scope.$apply();
                 }
             });
             
@@ -97,4 +104,54 @@ angular.module('common_directive',[])
             
         }
     }
-});
+})
+//找潮货-添加或者编辑收货地址，初始化选择区域插件
+.directive('selectUserArea',function(){
+    return {
+        link:function(scope, element, attrs){
+
+            (function($, doc) {
+                $.init();
+                $.ready(function() {
+                    //地址
+                    var cityPicker3 = new $.PopPicker({
+                        layer: 3
+                    });
+                    cityPicker3.setData(cityData);
+
+                    document.getElementById('userArea').addEventListener('tap', function(event) {
+                        document.activeElement.blur();
+                        cityPicker3.show(function(items) {
+                            if(!(items[2] || {}).text){
+                                var cityDom = (items[0] || {}).text + " " + (items[1] || {}).text;
+                            } else {
+                                var cityDom = (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
+                            }
+                            var hcity = (items[0] || {}).text+"";
+                            if(hcity != null && hcity != ""){
+                                scope.address.getGoodsUserOfProvince = hcity;
+                            }
+
+                            var hproper = (items[1] || {}).text+"";
+                            if(hproper != null && hproper != ""){
+                                scope.address.getGoodsUserOfCity = hproper;
+                            }
+
+                            var harea = (items[2] || {}).text+"";
+                            if(harea != null && harea != ""){
+                                if(harea=='undefined'){
+                                    scope.address.getGoodsUserOfArea = '';
+                                } else {
+                                    scope.address.getGoodsUserOfArea = harea;
+                                }
+                            }
+                            scope.$apply();
+                        });
+                    }, false);
+                });
+            })(mui, document);
+            
+        }
+    }
+})
+;

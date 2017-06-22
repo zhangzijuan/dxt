@@ -1,0 +1,59 @@
+{   
+    "success":true,
+    "selectStoreListPage":{
+        "pageNo": 1,
+        "pageSize":10,
+        "totalPages":2,
+        "totalSize":30,
+        "rows": [
+            {
+                "storeId":"1",
+                "storeName": "1迪信通宁波店",
+                "storeAddress":"1宁波南路与北京路交叉口向右300米",
+                "storeLowPrice":"5688"
+            },
+            {
+                "storeId":"2",
+                "storeName": "2迪信通宁波店",
+                "storeAddress":"2宁波南路与北京路交叉口向右300米",
+                "storeLowPrice":"5687"
+            },
+            {
+                "storeId":"3",
+                "storeName": "3迪信通宁波店",
+                "storeAddress":"3宁波南路与北京路交叉口向右300米",
+                "storeLowPrice":"5686"
+            },
+            {
+                "storeId":"4",
+                "storeName": "4迪信通宁波店",
+                "storeAddress":"4宁波南路与北京路交叉口向右300米",
+                "storeLowPrice":"5685"
+            },
+            {
+                "storeId":"5",
+                "storeName": "5迪信通宁波店",
+                "storeAddress":"5宁波南路与北京路交叉口向右300米",
+                "storeLowPrice":"5684"
+            },
+            {
+                "storeId":"6",
+                "storeName": "6迪信通宁波店",
+                "storeAddress":"6宁波南路与北京路交叉口向右300米",
+                "storeLowPrice":"5683"
+            },
+            {
+                "storeId":"7",
+                "storeName": "7迪信通宁波店",
+                "storeAddress":"7宁波南路与北京路交叉口向右300米",
+                "storeLowPrice":"5682"
+            },
+            {
+                "storeId":"8",
+                "storeName": "8迪信通宁波店",
+                "storeAddress":"8宁波南路与北京路交叉口向右300米",
+                "storeLowPrice":"5682"
+            }
+        ]
+    }
+}

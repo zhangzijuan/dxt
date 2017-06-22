@@ -235,7 +235,7 @@ dxtApp.controller('GoodsSelectAddressCtrl',function($scope,$http,$location,$rout
 
 	//点击选择新的收获地址
     $scope.selectAddress = function(goodsAddress){
-    	toastr.success('调用原生接口返回确认订单界面修改选择的地址信息！');
+    	toastr.success('返回确认订单界面修改选择的地址信息！');
     }
 	
 });
@@ -261,8 +261,100 @@ dxtApp.controller('ManageAddressCtrl',function($scope,$http,$location){
 
     //编辑商品收货地址
     $scope.editAddress = function(goodsAddressId){
-    	// $location.path('');
+    	$location.path('/find_goods/addOrEdit_address/'+goodsAddressId);
     }
 	
 });
+
+
+//找潮货-添加或者编辑收获地址
+dxtApp.controller('AddOrEditAddressCtrl',function($scope,$http,$location,$routeParams){
+	$('html,body').css({'backgroundColor':'#efefef'});
+	var addressId = $routeParams.addressId;
+	$scope.address = null;
+	if(addressId == null || addressId == '' || addressId == 'null'){
+		$scope.addAdress = true;
+		$scope.address = {
+			getGoodsUserName:null,
+			getGoodsUserPhone:null,
+			getGoodsUserOfProvince:null,
+            getGoodsUserOfCity:null,
+            getGoodsUserOfArea:null,
+			getGoodsDetail:null
+		}
+	}else{
+		$scope.addAdress = false;
+		//todo 根据参数加载收货地址对象
+		$http.post('',{'addressId':addressId}).success(function(data){
+	        if(data.success == true){
+	            $scope.address = data.address;
+	        }else{
+	            toastr.success('数据加载失败！');
+	        }
+	    });
+	}
+
+	//保存收货详情信息
+	$scope.saveAddress = function(address){
+		var formData = angular.copy(address);
+		if (formData.getGoodsUserName == null || formData.getGoodsUserName == '') {
+            mui.alert('请输入收货人姓名');
+            return false;
+        }
+
+        if (formData.getGoodsUserPhone == null || formData.getGoodsUserPhone == ''|| (formData.getGoodsUserPhone.length != 11)) {
+            mui.alert('请输入11位手机号码');
+            return false;
+        }
+
+        if (formData.getGoodsUserOfProvince == null || formData.getGoodsUserOfProvince == '' || 
+        	formData.getGoodsUserOfCity == null || formData.getGoodsUserOfCity == '' || 
+        	formData.getGoodsDetail == null || formData.getGoodsDetail == '') {
+            mui.alert('请选择收货地址');
+            return false;
+        }
+        //todo 保存地址对象信息
+		$http.post('',{'address':address}).success(function(data){
+	        
+	    });
+	}
+
+});
+
+
+//找潮货-选择发货店铺
+dxtApp.controller('SelectStoreCtrl',function($scope,$http,$location,$routeParams){
+	$('html,body').css({'backgroundColor':'#efefef'}); 
+
+	var goodsId = $routeParams.goodsId;
+
+	$scope.selectedStoreId = null;
+	
+	$scope.url = '/data/find_goods/selectStore_storeList.json';
+	//根据传递的goodsId 查看所属的所有店铺列表
+	$http.post($scope.url,{}).success(function(data){
+        if(data.success == true){
+        	$scope.pageNo = data.selectStoreListPage.pageNo;
+            $scope.totalPages = data.selectStoreListPage.totalPages;
+            $scope.totalSize = data.selectStoreListPage.totalSize;
+            $scope.currentList = $scope.storesList = data.selectStoreListPage.rows;
+        }else{
+            toastr.success('数据加载失败！');
+        }
+    });
+
+    //上拉刷新
+    paginationPage($scope,'.select-store-content','storesList','selectStoreListPage');
+
+    //下一步，确认订单界面
+    $scope.saveSelectStore = function(){
+    	alert($scope.selectedStoreId);
+    	// $location.path('');
+    }
+});
+
+
+
+
+
 
