@@ -32,7 +32,7 @@ dxtApp.controller('FindGoodsCtrl',function($scope,$http,$location){
 
             },10);
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     });     
 
@@ -45,7 +45,7 @@ dxtApp.controller('FindGoodsCtrl',function($scope,$http,$location){
             $scope.totalSize = data.findGoodsListPage.totalSize;
             $scope.currentList = $scope.findGoodsList = data.findGoodsListPage.rows;
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     });
     //上拉刷新
@@ -134,7 +134,7 @@ dxtApp.controller('GoodsDetailCtrl',function($scope,$http,$sce,$location,$routeP
             goodsNotesRender();
 
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     });  
 
@@ -150,18 +150,18 @@ dxtApp.controller('GoodsDetailCtrl',function($scope,$http,$sce,$location,$routeP
 
 	//查看商品所有的评价
 	$scope.goViewAllComment = function(goodsId){
-		toastr.success('查看商品所有的评价啦！'+goodsId);
+		mui.alert('查看商品所有的评价啦！'+goodsId);
 	}
 
 	//查看商品所有的笔记
 	$scope.goViewAllNotes = function(goodsId){
-		toastr.success('查看商品所有的笔记！'+goodsId);
+		mui.alert('查看商品所有的笔记！'+goodsId);
 	}
 
-	//查看单个笔记详情界 main
+	//查看单个笔记详情界面
 	$scope.viewNoteDetail = function(noteId){
 		//todo 调用原生界面查看详情
-		toastr.success('查看单个笔记详情界，去原生喽！'+noteId);
+		mui.alert('查看单个笔记详情界，去原生喽！'+noteId);
 	}
 
 	//商品图文信息和参数信息切换查看
@@ -189,12 +189,13 @@ dxtApp.controller('GoodsDetailCtrl',function($scope,$http,$sce,$location,$routeP
 
 	//商品加入购物车
 	$scope.joinCart = function(goodsId){
-		toastr.success('商品加入购物车');
+		mui.alert('商品加入购物车');
 	}
 
 	//立即购买商品
 	$scope.buyGoods = function(goodsId){
-		toastr.success('立即购买商品');
+		
+		mui('.buy-goods').popover('show',document.getElementById('xiaDan')); 
 	}
 
 });
@@ -211,7 +212,7 @@ dxtApp.controller('GoodsVideosCtrl',function($scope,$http,$location,$routeParams
         if(data.success == true){
             $scope.goodsVideoList = data.goodsVideoList;
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     });
 
@@ -229,13 +230,13 @@ dxtApp.controller('GoodsSelectAddressCtrl',function($scope,$http,$location,$rout
         if(data.success == true){
             $scope.goodsAddressList = data.goodsAddressList;
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     });
 
 	//点击选择新的收获地址
     $scope.selectAddress = function(goodsAddress){
-    	toastr.success('返回确认订单界面修改选择的地址信息！');
+    	mui.alert('返回确认订单界面修改选择的地址信息！');
     }
 	
 });
@@ -250,13 +251,13 @@ dxtApp.controller('ManageAddressCtrl',function($scope,$http,$location){
         if(data.success == true){
             $scope.goodsAddressList = data.goodsAddressList;
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     });
 
 	//删除商品收货地址
     $scope.delAddress = function(goodsAddressId){
-    	toastr.success('调用后台接口删除收货地址！');
+    	mui.alert('调用后台接口删除收货地址！');
     }
 
     //编辑商品收货地址
@@ -289,7 +290,7 @@ dxtApp.controller('AddOrEditAddressCtrl',function($scope,$http,$location,$routeP
 	        if(data.success == true){
 	            $scope.address = data.address;
 	        }else{
-	            toastr.success('数据加载失败！');
+	            mui.alert('数据加载失败！');
 	        }
 	    });
 	}
@@ -339,7 +340,7 @@ dxtApp.controller('SelectStoreCtrl',function($scope,$http,$location,$routeParams
             $scope.totalSize = data.selectStoreListPage.totalSize;
             $scope.currentList = $scope.storesList = data.selectStoreListPage.rows;
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     });
 

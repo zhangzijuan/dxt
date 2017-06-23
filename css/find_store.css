@@ -1,0 +1,368 @@
+/*寻好店start*/
+.find-store-container img,.look-something-container img{
+	width: 100%;
+	height: 100%;
+}
+.find-store-tip-bar{
+	padding: 1.2rem 0.9rem 0;
+	font-size: 1.3rem;
+	/*letter-spacing: 1px;*/
+}
+.select-tip{
+	color: #333;
+}
+.view-all{
+	color: #999;
+	font-size: 1.2rem;
+	margin-top: 0.2rem;
+}
+.find-store-container .icon-dianpu{
+	background-color: #4395f7;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.3rem;
+}
+.find-store-container .icon-jiantou-copy{
+	font-size: 1.2rem;
+}
+
+.store-pic-container{
+	padding: 0 0.9rem;
+}
+.find-store-item,.find-store-content,.store-intro-container,
+.recommended-consultant-item .single-consultant
+{
+	padding: 0 0;
+}
+
+.find-store-item{
+	padding-top: 1.2rem;
+}
+.single-consultant img{
+	border-radius: 50%;
+	height: auto;
+}
+.store-intro-container{
+	padding: 1rem 0 1.3rem;
+}
+.store-name{
+	font-size: 1.5rem;
+	color:#333;
+	font-weight: bold;
+}
+.store-intro{
+	margin-top:0.5rem;
+	letter-spacing: 0.1rem;
+	color: #777;
+	font-size: 1.3rem;
+}
+.recommend-tip-text{
+	font-size: 1.4rem;
+	color: #333;
+}
+.recommend-tip-text:before{
+	content:''; 
+	border: 0.08rem solid #dfdfdf;
+    content: "";
+    display: inline-block;
+    margin: 0 2.8rem 0.4rem 0;
+    width: 10%;
+}
+
+.recommend-tip-text:after{
+	content:'';
+	border: 0.08rem solid #dfdfdf;
+    content: "";
+    display: inline-block;
+    margin: 0 0 0.4rem 2.8rem;
+    width: 10%;
+}
+.single-consultant{
+	width: 15%;
+}
+.recommended-consultant-item{
+	margin-top: 1.8rem;
+}
+
+.recommended-consultant-item .item-offset{
+	margin-left: 13.33%;
+}
+.goto-store-opt{
+	margin-top: 1.8rem;
+	margin-bottom: 1.4rem;
+}
+
+.go-to-store{
+	background-color: #4395f7;
+    border-color: #4395f7;
+    border-radius: 2rem;
+    color: #fff;
+    font-size: 1.4rem;
+    padding-bottom: 0.9rem;
+    padding-top: 0.9rem;
+}
+
+.go-to-store:active{
+	background-color:rgba(67,149,247,.5); 
+}
+
+.break-line-bar{
+	padding: 0.4rem 0;
+	background-color: #efefef;
+}
+
+.store-from{
+	color: #fff;
+    font-size: 1.3rem;
+    left: 1.5rem;
+    position: absolute;
+    top: 0.9rem;
+}
+.store-collect{
+	background-color: #203854;
+    border-radius: 1.6rem;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 0.2rem 0.6rem;
+    position: absolute;
+    right: 1.7rem;
+    top: 1.3rem;
+}
+.store-collect .icon-favorite,.store-collect .icon-g{
+	font-size: 1.42rem;
+}
+.store-pic-tip-text{
+	margin-left: 0.3rem;
+}
+.consultant-name{
+	font-size: 1.3rem;
+	margin-top: 0.6rem;
+	display: block;
+}
+/*寻好店end*/
+
+/*寻好店-店铺详情start*/
+.find-store-detail-container img{
+	width: 100%;
+}
+.store-detail-pic,.store-detail-info-container,
+.store-icon,.store-main-info{
+	padding:0 0;
+}
+.store-detail-info-container{
+    bottom: 1.2rem;
+    left: 0;
+    position: absolute;
+    z-index: 1;
+    padding: 0 1rem;
+}
+.store-icon{
+	width: 12.5%;
+}
+.store-icon img{
+	border-radius: 50%;
+}
+.store-main-info{
+	padding-left: 0.9rem;
+}
+.store-from-me{
+	color: #fff;
+    font-size: 1.2rem;
+    left: 0;
+    position: absolute;
+    top: 1.8rem;
+    padding-left: 0.9rem;
+}
+.store-detail-name{
+	font-size: 1.4rem;
+	color: #fff;
+	overflow: hidden;
+	white-space: nowrap; 
+	-o-text-overflow:ellipsis;
+	text-overflow:ellipsis;
+}
+.find-store-detail-container .swiper-pagination{
+	color: #fff;
+	padding-right: 1.5rem;
+	bottom: 1rem;
+    right: 0;
+    left: auto;
+    width: auto;
+    background-color: rgba(25,25,25,0.8);
+    border-radius: 1rem;
+    margin: 0 1.2rem 0.4rem 0;
+    padding:0.1rem 1rem;
+}
+.store-detail-tab-bar{
+	padding:0.8rem 0;
+}
+.find-store-detail-container .consultant-tab,
+.find-store-detail-container .goods-tab,
+.store-detail-info,.store-detail-intro,
+.store-address-text,.icon-dianhua,
+.store-address-text,.address-text,
+.inner-pics-tip,.store-inner-pics,
+.all-recommended-consultant-container,
+.consultant-list-item,.consultant-name,
+.fensi-num,.consultant-follow,.goods-title,
+.goods-intro-text,.goods-price-container,
+.goods-price-new,.goods-price-old{
+	padding: 0;
+}
+.find-store-detail-container .nav > li{
+	background-color: rgb(216,216,216);
+	border-radius: 1.3rem;
+}
+.find-store-detail-container .nav > li > span{
+	display: inline-block;
+	font-size: 1.2rem;
+	color: #fff;
+	padding: 0.3rem 0;
+}
+
+.find-store-detail-container .nav > li.active{
+	background-color: rgb(67,149,247);
+}
+.store-detail-intro{
+	border-bottom: 0.1rem solid rgb(221,221,221);
+	/*padding:0.5rem 0;*/
+}
+.store-intro-tip{
+	border-bottom: 0.1rem solid rgb(221,221,221);
+    padding: 0.8rem 0;
+    margin-left: 1.2rem;
+    color: #333;
+    font-size: 1.3rem;
+    width: 96.7%;
+}
+.store-intro-cont{
+	color: #777;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    padding: 1.1rem;
+}
+.store-detail-address{
+	padding: 1rem 1.1rem;
+
+}
+.address-text{
+	color: #777;
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+    height: 1.6rem;
+    padding-left: 0.5rem;
+}
+.store-detail-address .icon-didian{
+	font-size: 2rem;
+	color: #777;
+}
+.store-address-text{
+	width: 87%;
+}
+.store-address-text{
+	border-right: 0.1rem solid #dfdfdf;
+	padding-right: 1rem;
+}
+.store-detail-address .icon-dianhua{
+	color: #70cf95;	
+	font-size: 2rem;
+	margin-right: 0.8rem;
+}
+.store-inner-pics-container{
+	padding:1rem 1.2rem;
+}
+
+.store-inner-pics{
+	margin-top: 1rem;
+}
+
+.store-inner-pics .swiper-slide{
+	border:0.1rem solid #ddd;
+	padding:0;
+	height: 7rem;
+}
+
+.store-inner-pics img{
+	height: 100%;
+	width: 100%;
+}
+.all-recommended-consultant-container{
+	padding: 1rem;
+}
+.consultant-list-item{
+	margin: 1.9rem 4.1% 0;
+
+}
+.consultant-name{
+	color: #333;
+}
+.fensi-num{
+	color: #999;
+	font-size: 1rem;
+	margin-top: 0.3rem;
+	letter-spacing: 0.05rem;
+}
+
+.consultant-follow{
+	border: 0.1rem solid #70cf95;
+    border-radius: 0.4rem;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    margin-top: 0.7rem;
+    color: #70cf95;
+}
+.consultant-already-follow{
+	border: 0.1rem solid #ccc;
+	color: #ccc;
+	border-radius: 0.4rem;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    margin-top: 0.7rem;
+}
+.store-goods-list{
+	background-color: #efefef;
+	padding: 1rem 1%;
+}
+.store-goods-item{
+	background-color: #fff;
+	padding:0.9rem 0.8rem 0.4rem;
+	border:0.1rem solid #ddd;
+	border-radius: 0.5rem;
+	margin: 0 1% 0.8rem;
+	width: 48%;
+}
+.goods-cover img{
+	border-radius: 0.4rem;
+}
+.goods-title {
+	margin-top: 1rem;
+	color: #333;
+	font-size: 1.4rem;
+}
+.goods-intro-text{
+	margin-top: 0.3rem;
+	font-size: 1.3rem;
+	color: #777;
+	overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+.goods-price-new{
+	color: #ff5959;
+	font-size: 1.8rem;
+}
+.goods-price-old{
+	color: #999;
+	font-size: 1.3rem;
+	margin-top: 0.5rem;
+	text-decoration:line-through
+}
+.goods-price-container{
+	margin-top: 0.3rem;
+}
+.yen{
+	margin-right: 0.2rem;
+}
+/*寻好店-店铺详情end*/

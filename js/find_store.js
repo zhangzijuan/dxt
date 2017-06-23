@@ -28,7 +28,7 @@ dxtApp.controller('FindStoreCtrl',function($scope,$http,$location){
             $scope.currentList = $scope.storeItemList = data.storeListPage.rows;
             $scope.renderStoreListView();
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     }); 
 
@@ -42,7 +42,7 @@ dxtApp.controller('FindStoreCtrl',function($scope,$http,$location){
 
     //收藏或者取消收藏
     $scope.collectStore = function(storeId){
-        toastr.success('收藏成功！'+storeId);
+        mui.alert('收藏成功！'+storeId);
     }
     //查看店铺详情
     $scope.goStoreDetail = function(storeId){
@@ -103,7 +103,7 @@ dxtApp.controller('StoreDetailCtrl',function($scope,$http,$location,$routeParams
             
 
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     }); 
 
@@ -116,7 +116,7 @@ dxtApp.controller('StoreDetailCtrl',function($scope,$http,$location,$routeParams
             $scope.totalSize = data.storeGoodsListPage.totalSize;
             $scope.currentList = $scope.storeGoodsList = data.storeGoodsListPage.rows;
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     }); 
 

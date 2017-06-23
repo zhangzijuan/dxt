@@ -1,0 +1,122 @@
+/*营业员-我的点赞列表start*/
+.thumb-up-title,.thumb-up-tip,.thumb-up-item-content{
+	padding: 0;
+}
+.seller-thumb-up-container{
+	margin-top: 0.8rem;
+}
+.thumb-up-item{
+	background-color: #fff;
+	padding: 1.7rem 1.5rem;
+	border-bottom: 0.1rem solid #ddd;
+}
+.thumb-up-title{
+	color: #333;
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+.thumb-up-tip .icon-dianzan1{
+	color: #ccc;
+    font-size: 1.8rem;
+}
+.thumb-up-tip .thumb-up-num{
+	color: #9b9b9b;
+    font-size: 1.5rem;
+}
+.search-input-container,.history-result-bar,
+.history-result-bar-tip,.del-opt,
+.history-search-content,.history-item,.search-result-item,
+.goods-name{
+    padding: 0;
+    
+}
+.seller-search-select-container .input-group{
+	padding: 1.5rem 1rem;
+	background-color: #e6e6e6;
+}
+
+.seller-search-select-container .form-control::-moz-placeholder{
+    color: #b6b6b6;
+    letter-spacing: 0.06rem;
+    opacity: 1;
+    font-size: 1.4rem;
+}
+
+.seller-search-select-container .form-control::-webkit-input-placeholder{
+	color: #b6b6b6;
+    letter-spacing: 0.06rem;
+    opacity: 1;
+    font-size: 1.4rem;
+}
+.search-input-container	.icon-search{
+	color: #8f8f94;
+    font-size: 1.6rem;
+    left: 1.8rem;
+    position: absolute;
+    top: 2rem;
+    z-index: 100;
+}
+.search-input-container .form-control{
+	padding-left: 2.7rem;
+	border: 0.1rem solid #ddd!important;
+    border-radius: 0.6rem!important;
+    height: 3.4rem;
+}
+.search-input-container .input-group-addon{
+	background-color: #e6e6e6;
+	border:none;
+	color: #777;
+	padding:0.6rem;
+	font-size: 1.5rem;
+}
+.search-input-container .form-control:focus{
+	box-shadow: none;
+}
+.history-search-container{
+    padding: 1.5rem 1.8rem;
+    margin-top: 1rem;
+}
+.history-result-bar-tip{
+	color: #999;
+	font-size: 1.3rem;
+}
+.history-search-content .history-item{
+	border: 0.1rem solid #ddd;
+    border-radius: 0.3rem;
+    color: #333;
+    font-size: 1.3rem;
+    margin: 1rem 2rem 0.5rem 0;
+    padding: 0.4rem 0.8rem;
+    width: auto;
+}
+.search-result-list-container{
+	padding:0 0 0 1.5rem;
+	margin-top: 1rem;
+}
+.search-result-item{
+	padding:1.2rem 1.5rem 1.2rem 0.2rem;
+	border-bottom: 0.1rem solid #e5e5e5;
+}
+.search-result-list-container .selected{
+	border-bottom-color: #4395f7;
+}
+.history-search-content .selected{
+	background-color: #ddd;
+}
+.search-result-list-container .icon-gou{
+	font-size: 1.5rem; 
+	color: #4395f7;
+	padding: 0;
+	font-weight: bold;
+}
+.history-result-bar{
+	padding: 0.6rem 0;
+}
+.history-result-bar .del-opt{
+	margin-top: -0.5rem; 
+}
+
+/*营业员-我的点赞列表end*/

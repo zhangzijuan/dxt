@@ -13,7 +13,7 @@ dxtApp.controller('MySellerCtrl',function($scope,$http){
             $scope.totalSize = data.thumbUpListPage.totalSize;
             $scope.currentList = $scope.thumbUpList = data.thumbUpListPage.rows;
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     }); 
 
@@ -23,7 +23,7 @@ dxtApp.controller('MySellerCtrl',function($scope,$http){
 	//（营业员）查看被点赞的笔记详情
     $scope.viewNoteDetail = function(thumbUpNoteId){
     	//todo 根据笔记类型查看笔记详情
-        toastr.success('查看笔记详情！去原生啦！');
+        mui.alert('查看笔记详情！去原生啦！');
     }
 
 });
@@ -41,7 +41,7 @@ dxtApp.controller('SearchSelectGoodsCtrl',function($scope,$http,$routeParams){
         if(data.success == true){
             $scope.historySearchList = data.historySearchList;
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     }); 
 
@@ -59,7 +59,7 @@ dxtApp.controller('SearchSelectGoodsCtrl',function($scope,$http,$routeParams){
                 $scope.totalSize = data.searchResultListPage.totalSize;
                 $scope.currentList = $scope.searchResultList = data.searchResultListPage.rows;
             }else{
-                toastr.success('数据加载失败！');
+                mui.alert('数据加载失败！');
             }
         }); 
 

@@ -1,0 +1,115 @@
+/*看看start*/
+.look-something-promote-container,
+.promote-pic,.look-something-content,
+.something-item-detail,.subject-name,.subject-attr,
+.subject-tip,.subject-store-container,.subject-time{
+	padding:0 0;
+}
+.promote-item-detail{
+	padding:1rem 0;
+}
+.promote-item-name{
+	color: #333;
+	font-size: 1.7rem;
+}
+.promote-item-intro{
+	margin-top: 0.4rem;
+	color: #777;
+	font-size: 1.3rem;
+	letter-spacing: 0.05rem;
+}
+.look-something-item{
+	padding:1rem 0;
+	border-bottom: 0.1rem solid #ddd;
+}
+.something-item-pic{
+	padding:0 0.9rem;
+	width: 28%;
+}
+.something-item-pic img{
+	border:0.1rem solid #ddd;
+}
+.something-item-detail{
+	width: 72%;
+}
+
+.subject-attr,.subject-tip,.subject-name{
+	padding-right: 1.4rem;
+
+}
+.subject-name{
+	color: #333;
+	font-size: 1.5rem;
+	overflow: hidden;
+	white-space: nowrap; 
+	-o-text-overflow:ellipsis;
+	text-overflow:ellipsis;
+}
+.subject-attr{
+	color: #777;
+	font-size: 1.2rem;
+	margin-top: 0.5rem;
+	letter-spacing: 0.06rem;
+}
+.something-item-detail .icon-location{
+	background-color: #ffc029;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 1.2rem;
+	padding: 0 0.1rem;
+}
+.subject-store-name,.subject-time{
+	font-size: 1.1rem;
+	color: #999;
+}
+.subject-tip{
+	margin-top: 0.6rem;
+}
+.subject-time{
+	margin-top: 0.4rem;
+}
+.subject-jiaobiao{
+    font-size: 4rem;
+    position: absolute;
+    right: 0;
+    top: -0.7rem;
+}
+.look-something-item .zuixin{
+	color: #ff5959;
+}
+.look-something-item .tuijian{
+	color: #2cc7b6;
+}
+.subject-jiaobiao-text{
+	color: #fff;
+    font-size: 1.1rem;
+    position: absolute;
+    right: 0.4rem;
+    top: 1.4rem;
+    transform:rotate(45deg);
+	-ms-transform:rotate(45deg); 	/* IE 9 */
+	-moz-transform:rotate(45deg); 	/* Firefox */
+	-webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(45deg); 	
+}
+.subject-shipin-type{
+	background-color: #70cf95;
+    color: #fff;
+    font-size: 1rem;
+    left: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    position: absolute;
+    top: 0;
+    border-radius: 0.3rem;
+}
+.subject-shipin-bofang{
+    left: 33%;
+    padding: 0.2rem 0.5rem;
+    position: absolute;
+    top: 24%;
+}
+.subject-shipin-bofang .icon-rectangle1{
+	color: #fff;
+    font-size: 3rem;
+}
+/*看看end*/

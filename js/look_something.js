@@ -8,7 +8,7 @@ dxtApp.controller('LookSomethingCtrl',function($scope,$http){
         if(data.success == true){
             $scope.promoteBarInfo = data.promoteBarInfo;
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     }); 
 
@@ -21,7 +21,7 @@ dxtApp.controller('LookSomethingCtrl',function($scope,$http){
             $scope.totalSize = data.subjectListPage.totalSize;
             $scope.currentList = $scope.subjectList = data.subjectListPage.rows;
         }else{
-            toastr.success('数据加载失败！');
+            mui.alert('数据加载失败！');
         }
     }); 
 
@@ -30,11 +30,11 @@ dxtApp.controller('LookSomethingCtrl',function($scope,$http){
 
     //查看推广栏详情
     $scope.viewPromoteItemDetail = function(promoteId){
-        toastr.success('查看推广栏详情！');
+        mui.alert('查看推广栏详情！');
     }
 
     //查看专题详情
     $scope.viewSubjectDetail = function(subjectId){
-        toastr.success('查看专题详情！');
+        mui.alert('查看专题详情！');
     }
 });

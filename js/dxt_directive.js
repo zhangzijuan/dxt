@@ -17,13 +17,13 @@ angular.module('common_directive',[])
                     $(element).addClass('consultant-follow'); 
                     $(element).find('span').html('+ 关注');  
                     followed = false;
-                    toastr.success('取消关注啦！'); 
+                    mui.toast('取消关注啦！',{ duration:'long', type:'div' })
                 }else{
                     $(element).removeClass('consultant-follow');
                     $(element).addClass('consultant-already-follow'); 
                     $(element).find('span').html('已关注');
                     followed = true;
-                    toastr.success('关注成功啦！'); 
+                    mui.toast('关注成功啦！',{ duration:'long', type:'div' })
                 }
                 scope.storeDetailInfo.recommendedConsultants[dataIndex].followed=followed;
                 scope.$apply();
@@ -150,6 +150,15 @@ angular.module('common_directive',[])
                     }, false);
                 });
             })(mui, document);
+            
+        }
+    }
+})
+.directive('buyGoods',function(){
+    return {
+        link:function(scope, element, attrs){
+
+            
             
         }
     }
