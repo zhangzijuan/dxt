@@ -70,17 +70,19 @@
 
         <div class="loading">
             <div class="ajax-loading-bg"></div>
-            <span class="ajax-loading"></span>
+            <span class="ajax-loading">
+                <img ng-src="/image/loading.gif" alt="loading"/>
+            </span>
         </div>
 
         <div class="dxt-content">
             <div class="container container-fluid" ng-view></div>
         </div>
 
-        <!-- 首页（默认界面） -->
+        <!-- 首页（默认界面）-->
         <script type="text/ng-template" id="index">
-            <h1> Home </h1>
-        </script>
+            <h2>home</h2>
+        </script> 
 
         <!-- 营业员-我的点赞列表-->
         <script type="text/ng-template" id="my_seller/thumb_up_list.html">
